@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software Licensing Cost Optimization</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Claude Team Proposal</p>
+        <h1>Software Licensing Cost Optimization</h1>
+      </div>
+      <div class="source-meta" id="sourceMeta"></div>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="Dashboard controls">
+        <label>
+          Display currency
+          <select id="currencySelect">
+            <option value="USD">USD</option>
+            <option value="HKD">HKD</option>
+            <option value="RM">RM</option>
+          </select>
+        </label>
+        <label>
+          Country
+          <select id="countryFilter">
+            <option value="all">Hong Kong + Malaysia</option>
+            <option value="HK">Hong Kong</option>
+            <option value="MY">Malaysia</option>
+          </select>
+        </label>
+        <label>
+          Employee
+          <select id="employeeFilter">
+            <option value="all">All employees</option>
+          </select>
+        </label>
+        <label>
+          Subscription
+          <div id="subscriptionDropdown" class="multi-select"></div>
+        </label>
+        <label class="switch">
+          <input id="compareToggle" type="checkbox" checked />
+          <span>Compare with Claude Team</span>
+        </label>
+      </section>
+
+      <section class="month-panel panel" aria-label="Month selector">
+        <div class="panel-head">
+          <div>
+            <h2>Month Selection</h2>
+            <span>Select one month or multiple months for an aggregate proposal view</span>
+          </div>
+          <div class="month-actions">
+            <button id="selectAllMonths" type="button">All</button>
+          </div>
+        </div>
+        <div id="monthChecks" class="month-checks"></div>
+      </section>
+
+      <section class="view-toggle panel" aria-label="Analysis view selector">
+        <div>
+          <h2>Analyze spend by</h2>
+          <span>Switch between who used the budget and which projects consumed the budget</span>
+        </div>
+        <div class="segmented-control">
+          <button id="employeeMode" class="active" type="button">Employee Usage</button>
+          <button id="projectMode" type="button">Project Usage</button>
+        </div>
+      </section>
+
+      <section class="kpis" aria-label="Key totals">
+        <article>
+          <span>Current spend</span>
+          <strong id="currentTotal">USD 0</strong>
+          <small id="currentOriginal">HKD 0 + RM 0</small>
+        </article>
+        <article>
+          <span>Proposed cost for period</span>
+          <strong id="proposedMonthly">USD 0</strong>
+          <small id="proposedFormula">0 seats + pool</small>
+        </article>
+        <article>
+          <span>Estimated saving</span>
+          <strong id="savingTotal">USD 0</strong>
+          <small id="savingRate">0%</small>
+        </article>
+        <article>
+          <span>Selected period</span>
+          <strong id="selectedMonthCount">0</strong>
+          <small id="selectedMonthLabel">No month</small>
+        </article>
+      </section>
+
+      <section class="hero-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Current Spend vs Claude Team</h2>
+              <span>Hover to compare values; click a month to focus details</span>
+            </div>
+            <span id="chartHint">Hover for values</span>
+          </div>
+          <div id="mainChart" class="main-chart" role="img" aria-label="Current spend versus proposed plan"></div>
+          <div id="chartTooltip" class="chart-tooltip" hidden></div>
+        </article>
+
+        <aside class="panel scenario-panel">
+          <div class="panel-head compact">
+            <div>
+              <h2>Seat Scenario</h2>
+              <span>Tech seats are fixed; operation seats are adjustable</span>
+            </div>
+          </div>
+          <div class="seat-block">
+            <div>
+              <span>Tech team seats</span>
+              <strong id="techSeats">11 fixed</strong>
+            </div>
+            <p>Each tech team member needs one Claude Team seat.</p>
+          </div>
+          <label class="range-label">
+            Operation seats
+            <input id="opsSeats" type="range" min="0" max="6" value="6" />
+          </label>
+          <div class="range-meta">
+            <span id="opsSeatValue">6 seats</span>
+            <span>usage uncertain</span>
+          </div>
+          <div class="scenario-costs">
+            <div>
+              <span>Cost per seat</span>
+              <strong>USD 20</strong>
+            </div>
+            <div>
+              <span>Extra token pool</span>
+              <strong>USD 500</strong>
+            </div>
+            <div>
+              <span>Scenario total</span>
+              <strong id="scenarioTotal">USD 840</strong>
+            </div>
+          </div>
+          <div class="people-list">
+            <h3>Tech team</h3>
+            <div id="techPeople"></div>
+            <h3>Operation candidates</h3>
+            <div id="opsPeople"></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <div class="panel-head">
+          <div>
+              <h2 id="detailTitle">Selected Period Breakdown</h2>
+              <span id="detailSubtitle">Cost share across selected months</span>
+            </div>
+            <button id="clearMonthFocus" class="ghost-button" type="button">Back to selected period</button>
+          </div>
+          <div class="detail-grid">
+            <div id="employeePie" class="pie-wrap"></div>
+            <div id="employeeBreakdown" class="bars"></div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="personTitle">Usage Details</h2>
+              <span id="personSubtitle">Click an employee or project to inspect spend</span>
+            </div>
+          </div>
+          <div id="personDetails" class="person-details"></div>
+        </article>
+      </section>
+
+      <section class="plan-comparison">
+        <article class="panel plan-card recommended">
+          <span>Recommended</span>
+          <h2>Claude Team Standard</h2>
+          <strong>USD 20 / user / month</strong>
+          <p>Best fit for this proposal: lower predictable cost, centralized billing, usage export, recoverable company-owned accounts, and a fixed monthly extra token pool.</p>
+          <ul>
+            <li>Solves the current monitoring gap: today we cannot clearly see each person's project focus and spend focus</li>
+            <li>Supports seat recovery when employees leave</li>
+            <li>Claude admin exports can become monthly employee and project usage reports</li>
+          </ul>
+        </article>
+        <article class="panel plan-card">
+          <span>Current shortage</span>
+          <h2>Fragmented Subscriptions</h2>
+          <strong>Manual reporting</strong>
+          <p>Spend is spread across employees and tools, so project focus, heavy users, and account ownership require manual consolidation.</p>
+        </article>
+        <article class="panel plan-card">
+          <span>Return measurement</span>
+          <h2>What We Can Measure</h2>
+          <strong>Cost return now, usage return next</strong>
+          <p>Now we can measure cost by project and expected savings. With Claude exports, future reports can measure usage by employee and project.</p>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Monthly Cost Summary</h2>
+            <span>Start from monthly totals; open details only when needed</span>
+          </div>
+          <span id="rowCount">0 rows</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Current total</th>
+                <th>Proposed total</th>
+                <th>Estimated saving</th>
+                <th>Saving rate</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="detailRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel proposal-builder" aria-label="Proposal report builder">
+        <div class="panel-head">
+          <div>
+            <h2>Management Proposal Builder</h2>
+            <span>Edit the narrative, choose dashboard visuals, then download a proposal for management review</span>
+          </div>
+          <button id="downloadProposal" type="button">Download proposal</button>
+        </div>
+        <div class="proposal-grid">
+          <div>
+            <h3>Include visuals</h3>
+            <div class="visual-options">
+              <label><input type="checkbox" value="trend" checked /> Current Spend vs Claude Team trend</label>
+              <label><input type="checkbox" value="seat" checked /> Seat Scenario</label>
+              <label><input type="checkbox" value="breakdown" checked /> Current breakdown view</label>
+              <label><input type="checkbox" value="monthly" checked /> Monthly Cost Summary</label>
+              <label><input type="checkbox" value="recommendation" checked /> Recommendation and return measurement</label>
+            </div>
+          </div>
+          <div>
+            <h3>Editable proposal text</h3>
+            <div id="proposalText" class="proposal-editor" contenteditable="true"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

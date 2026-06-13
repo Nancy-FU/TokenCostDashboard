@@ -1,0 +1,2842 @@
+{
+  "sourceFile": "/Users/nerolifu/Downloads/Summary of software licensing (1).xlsx",
+  "generatedAt": "2026-06-03T17:25:54",
+  "rows": [
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2025-02",
+      "amount": 79.44,
+      "total": 79.44,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.44
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-07",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": "Subtotal USD19.99 Tax USD1.22"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-08",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-09",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2025-09",
+      "amount": 79.42,
+      "total": 79.42,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.42
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-09",
+      "amount": 85.76,
+      "total": 85.76,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 85.76
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Bryan",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-09",
+      "amount": 79.54,
+      "total": 79.54,
+      "projects": [
+        "VIO + Mini APP",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 26.51
+        },
+        {
+          "project": "TBPP",
+          "total": 26.51
+        },
+        {
+          "project": "TDTLP",
+          "total": 26.52
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-09",
+      "amount": 79.47,
+      "total": 79.47,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.47
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-10",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-10",
+      "amount": 85.77,
+      "total": 85.77,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 85.77
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Bryan",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-10",
+      "amount": 79.55,
+      "total": 79.55,
+      "projects": [
+        "VIO + Mini APP",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 26.52
+        },
+        {
+          "project": "TBPP",
+          "total": 26.52
+        },
+        {
+          "project": "TDTLP",
+          "total": 26.51
+        }
+      ],
+      "supportUser": 1,
+      "remark": "left Jan 2026"
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-10",
+      "amount": 99.9,
+      "total": 99.9,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.96
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-10",
+      "amount": 79.48,
+      "total": 79.48,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.48
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Viyi",
+      "vendor": "OpenAI",
+      "plan": "Go",
+      "subscription": "OpenAI - Go",
+      "month": "2025-10",
+      "amount": 38.99,
+      "total": 38.99,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 13.0
+        },
+        {
+          "project": "TBPP",
+          "total": 13.0
+        },
+        {
+          "project": "Documentation",
+          "total": 12.99
+        }
+      ],
+      "supportUser": 1,
+      "remark": "left"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-11",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2025-11",
+      "amount": 79.43,
+      "total": 79.43,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.43
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-11",
+      "amount": 85.78,
+      "total": 85.78,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 85.78
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-11",
+      "amount": 99.91,
+      "total": 99.91,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.97
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-11",
+      "amount": 79.42,
+      "total": 79.42,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 79.42
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2025-12",
+      "amount": 1570.0,
+      "total": 1570.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 392.5
+        },
+        {
+          "project": "VouChain",
+          "total": 392.5
+        },
+        {
+          "project": "TBPP",
+          "total": 392.5
+        },
+        {
+          "project": "TDTLP",
+          "total": 392.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2025-12",
+      "amount": 794.1,
+      "total": 794.1,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.1
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-12",
+      "amount": 99.92,
+      "total": 99.92,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.98
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-12",
+      "amount": 79.49,
+      "total": 79.49,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.49
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Xian Lim",
+      "vendor": "ShinJiru",
+      "plan": "Yearly",
+      "subscription": "ShinJiru - Yearly",
+      "month": "2025-12",
+      "amount": 63.61,
+      "total": 63.61,
+      "projects": [
+        "Domain registration"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Domain registration",
+          "total": 63.61
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Annie",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 156.75,
+      "total": 156.75,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 156.75
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 162.21,
+      "total": 162.21,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 162.21
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Plus",
+      "subscription": "Cursor - Plus",
+      "month": "2026-01",
+      "amount": 486.62,
+      "total": 486.62,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 486.62
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-01",
+      "amount": 3180.6,
+      "total": 3180.6,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 795.15
+        },
+        {
+          "project": "VouChain",
+          "total": 795.15
+        },
+        {
+          "project": "TBPP",
+          "total": 795.15
+        },
+        {
+          "project": "TDTLP",
+          "total": 795.15
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-01",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-01",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 39.77
+        },
+        {
+          "project": "VouChain",
+          "total": 39.77
+        },
+        {
+          "project": "TBPP",
+          "total": 39.77
+        },
+        {
+          "project": "TDTLP",
+          "total": 39.79
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-01",
+      "amount": 157.0,
+      "total": 157.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 157.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-01",
+      "amount": 794.1,
+      "total": 794.1,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.1
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Lemon Squeezy",
+      "plan": "Screen Studio",
+      "subscription": "Lemon Squeezy - Screen Studio",
+      "month": "2026-01",
+      "amount": 124.36,
+      "total": 124.36,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 124.36
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-01",
+      "amount": 99.93,
+      "total": 99.93,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.99
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 79.43,
+      "total": 79.43,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 79.43
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 79.5,
+      "total": 79.5,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.5
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Andy",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-02",
+      "amount": 1701.36,
+      "total": 1701.36,
+      "projects": [
+        "VIO + Mini APP",
+        "Co+Pay",
+        "MCP Service"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 567.12
+        },
+        {
+          "project": "Co+Pay",
+          "total": 567.12
+        },
+        {
+          "project": "MCP Service",
+          "total": 567.12
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-02",
+      "amount": 186.7,
+      "total": 186.7,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 186.7
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-02",
+      "amount": 1571.0,
+      "total": 1571.0,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 1571.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-02",
+      "amount": 3742.7,
+      "total": 3742.7,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 935.67
+        },
+        {
+          "project": "VouChain",
+          "total": 935.67
+        },
+        {
+          "project": "TBPP",
+          "total": 935.67
+        },
+        {
+          "project": "TDTLP",
+          "total": 935.69
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-02",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 39.77
+        },
+        {
+          "project": "VouChain",
+          "total": 39.77
+        },
+        {
+          "project": "TBPP",
+          "total": 39.77
+        },
+        {
+          "project": "TDTLP",
+          "total": 39.79
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 156.0,
+      "total": 156.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 156.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-02",
+      "amount": 794.12,
+      "total": 794.12,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.12
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Lemon Squeezy",
+      "plan": "Screen Studio",
+      "subscription": "Lemon Squeezy - Screen Studio",
+      "month": "2026-02",
+      "amount": 124.37,
+      "total": 124.37,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 124.37
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 99.94,
+      "total": 99.94,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 25.0
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-02",
+      "amount": 79.44,
+      "total": 79.44,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 79.44
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-02",
+      "amount": 79.51,
+      "total": 79.51,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.51
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Wan Yee",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 99.9,
+      "total": 99.9,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 33.3
+        },
+        {
+          "project": "TBPP",
+          "total": 33.3
+        },
+        {
+          "project": "Documentation",
+          "total": 33.3
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "vendor": "OpenAI",
+      "plan": "Go",
+      "subscription": "OpenAI - Go",
+      "month": "2026-02",
+      "amount": 24.0,
+      "total": 24.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 24.0
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Eva",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-03",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "Tokenized Horizon"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Tokenized Horizon",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-03",
+      "amount": 189.15,
+      "total": 189.15,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 189.15
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 3863.31,
+      "total": 3863.31,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 3863.31
+        }
+      ],
+      "supportUser": "",
+      "remark": "On-demand usage"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 2492.1,
+      "total": 2492.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 830.7
+        },
+        {
+          "project": "TBPP",
+          "total": 830.7
+        },
+        {
+          "project": "TDTLP",
+          "total": 830.7
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-03",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 53.03
+        },
+        {
+          "project": "TBPP",
+          "total": 53.03
+        },
+        {
+          "project": "TDTLP",
+          "total": 53.04
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "Fireflies",
+      "plan": "Unspecified",
+      "subscription": "Fireflies",
+      "month": "2026-03",
+      "amount": 163.0,
+      "total": 163.0,
+      "projects": [
+        "SOC2",
+        "Lingnan Strategic Consulting Programme"
+      ],
+      "projectAllocations": [
+        {
+          "project": "SOC2",
+          "total": 81.5
+        },
+        {
+          "project": "Lingnan Strategic Consulting Programme",
+          "total": 81.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 156.0,
+      "total": 156.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 156.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Peggy",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 1591.0,
+      "total": 1591.0,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 1591.0
+        }
+      ],
+      "supportUser": "",
+      "remark": "design team"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 1588.97,
+      "total": 1588.97,
+      "projects": [
+        "VIO + Mini APP",
+        "Layer 2",
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 529.66
+        },
+        {
+          "project": "Layer 2",
+          "total": 529.66
+        },
+        {
+          "project": "TBPP",
+          "total": 529.65
+        }
+      ],
+      "supportUser": "Tristan",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 794.13,
+      "total": 794.13,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.13
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 99.95,
+      "total": 99.95,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.99
+        },
+        {
+          "project": "TBPP",
+          "total": 24.99
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.99
+        },
+        {
+          "project": "Documentation",
+          "total": 24.98
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-03",
+      "amount": 79.45,
+      "total": 79.45,
+      "projects": [
+        "NGMT"
+      ],
+      "projectAllocations": [
+        {
+          "project": "NGMT",
+          "total": 79.45
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-03",
+      "amount": 79.52,
+      "total": 79.52,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.52
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Wan Yee",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 99.91,
+      "total": 99.91,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 33.3
+        },
+        {
+          "project": "TBPP",
+          "total": 33.3
+        },
+        {
+          "project": "Documentation",
+          "total": 33.31
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-03",
+      "amount": 79.41,
+      "total": 238.23,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 79.41
+        },
+        {
+          "project": "TBPP",
+          "total": 79.41
+        },
+        {
+          "project": "Documentation",
+          "total": 79.41
+        }
+      ],
+      "supportUser": 3,
+      "remark": "Yi Xiong, Howel and Athira"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Eva",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-04",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "Tokenized Horizon"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Tokenized Horizon",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-04",
+      "amount": 184.87,
+      "total": 184.87,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 184.87
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 3536.65,
+      "total": 3536.65,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 3536.65
+        }
+      ],
+      "supportUser": "",
+      "remark": "On-demand usage"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 677.8,
+      "total": 677.8,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 225.93
+        },
+        {
+          "project": "TBPP",
+          "total": 225.93
+        },
+        {
+          "project": "TDTLP",
+          "total": 225.94
+        }
+      ],
+      "supportUser": "",
+      "remark": "with refund"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-04",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-04",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 53.03
+        },
+        {
+          "project": "TBPP",
+          "total": 53.03
+        },
+        {
+          "project": "TDTLP",
+          "total": 53.04
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "Fireflies",
+      "plan": "Unspecified",
+      "subscription": "Fireflies",
+      "month": "2026-04",
+      "amount": 163.0,
+      "total": 163.0,
+      "projects": [
+        "SOC2",
+        "Lingnan Strategic Consulting Programme"
+      ],
+      "projectAllocations": [
+        {
+          "project": "SOC2",
+          "total": 81.5
+        },
+        {
+          "project": "Lingnan Strategic Consulting Programme",
+          "total": 81.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-04",
+      "amount": 156.0,
+      "total": 156.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 156.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Peggy",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 1591.0,
+      "total": 1591.0,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 1591.0
+        }
+      ],
+      "supportUser": "",
+      "remark": "design team"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 1579.95,
+      "total": 1579.95,
+      "projects": [
+        "VIO + Mini APP",
+        "Layer 2",
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 526.65
+        },
+        {
+          "project": "Layer 2",
+          "total": 526.65
+        },
+        {
+          "project": "TBPP",
+          "total": 526.65
+        }
+      ],
+      "supportUser": "Tristan",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 794.14,
+      "total": 794.14,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.14
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-04",
+      "amount": 99.96,
+      "total": 99.96,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.99
+        },
+        {
+          "project": "TBPP",
+          "total": 24.99
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.99
+        },
+        {
+          "project": "Documentation",
+          "total": 24.99
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-04",
+      "amount": 79.46,
+      "total": 79.46,
+      "projects": [
+        "NGMT"
+      ],
+      "projectAllocations": [
+        {
+          "project": "NGMT",
+          "total": 79.46
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-04",
+      "amount": 79.53,
+      "total": 79.53,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.53
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-04",
+      "amount": 79.42,
+      "total": 238.26,
+      "projects": [
+        "TDTLP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 119.13
+        },
+        {
+          "project": "Documentation",
+          "total": 119.13
+        }
+      ],
+      "supportUser": 3,
+      "remark": "Yi Xiong, Howel and Athira"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Eva",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-05",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "Tokenized Horizon"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Tokenized Horizon",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Hong",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-05",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-05",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-05",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 53.03
+        },
+        {
+          "project": "TBPP",
+          "total": 53.03
+        },
+        {
+          "project": "TDTLP",
+          "total": 53.04
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-05",
+      "amount": 1573.7,
+      "total": 1573.7,
+      "projects": [
+        "Layer 2",
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Layer 2",
+          "total": 786.85
+        },
+        {
+          "project": "TBPP",
+          "total": 786.85
+        }
+      ],
+      "supportUser": "Tristan",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-06",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    }
+  ],
+  "monthlyByCountry": [
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-02",
+      "total": 79.44
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-07",
+      "total": 171.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-08",
+      "total": 171.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-09",
+      "total": 171.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-09",
+      "total": 324.19
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-10",
+      "total": 171.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-10",
+      "total": 383.69
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-11",
+      "total": 171.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-11",
+      "total": 344.54
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-12",
+      "total": 1570.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-12",
+      "total": 1037.12
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-01",
+      "total": 4373.88
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-01",
+      "total": 1177.32
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-02",
+      "total": 7759.46
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-02",
+      "total": 1301.28
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-03",
+      "total": 10432.73
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-03",
+      "total": 1391.19
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-04",
+      "total": 8278.47
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-04",
+      "total": 1291.35
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-05",
+      "total": 2121.4
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-06",
+      "total": 71.6
+    }
+  ],
+  "employeeTotals": [
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "total": 12888.3
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "total": 10180.51
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "total": 4742.62
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "total": 4714.92
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Peggy",
+      "total": 3182.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Andy",
+      "total": 1701.36
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "total": 1026.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "total": 951.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Carol",
+      "total": 699.51
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "total": 556.5
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "total": 500.49
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Eva",
+      "total": 475.5
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "total": 397.2
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Wan Yee",
+      "total": 199.81
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Bryan",
+      "total": 159.09
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Hong",
+      "total": 158.5
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Annie",
+      "total": 156.75
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Xian Lim",
+      "total": 63.61
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Viyi",
+      "total": 38.99
+    }
+  ],
+  "subscriptionTotals": [
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Cursor - Ultra",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "total": 28558.78
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Cursor - Ultra",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "total": 3970.59
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Claude - Pro",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "total": 2579.08
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "OpenAI - Plus",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "total": 2446.5
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "OpenAI - Plus",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "total": 1156.63
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Cursor - Pro",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "total": 1112.79
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Claude - Pro",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "total": 714.78
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Cursor - Pro",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "total": 635.96
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Cursor - Plus",
+      "vendor": "Cursor",
+      "plan": "Plus",
+      "total": 486.62
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Netlify",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "total": 429.6
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Fireflies",
+      "vendor": "Fireflies",
+      "plan": "Unspecified",
+      "total": 326.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Lemon Squeezy - Screen Studio",
+      "vendor": "Lemon Squeezy",
+      "plan": "Screen Studio",
+      "total": 248.73
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "ShinJiru - Yearly",
+      "vendor": "ShinJiru",
+      "plan": "Yearly",
+      "total": 63.61
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "OpenAI - Go",
+      "vendor": "OpenAI",
+      "plan": "Go",
+      "total": 62.99
+    }
+  ]
+}

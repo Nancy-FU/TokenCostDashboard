@@ -1,0 +1,5079 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software Licensing Cost Optimization</title>
+    <style>
+:root {
+  color-scheme: light;
+  --bg: #f5f6f3;
+  --surface: #ffffff;
+  --ink: #17202a;
+  --muted: #687384;
+  --line: #dde3e6;
+  --blue: #2f6fbb;
+  --green: #0d8b79;
+  --gold: #c48321;
+  --red: #b94747;
+  --shadow: 0 16px 44px rgba(23, 32, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px clamp(18px, 4vw, 48px) 20px;
+  background: #17202a;
+  color: white;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #9fc8ee;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.04;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 13px;
+  color: #3c4855;
+}
+
+.source-meta {
+  color: #ccd6e0;
+  font-size: 13px;
+  text-align: right;
+}
+
+main {
+  width: min(1540px, 100%);
+  margin: 0 auto;
+  padding: 18px clamp(14px, 3vw, 36px) 38px;
+}
+
+.panel,
+.kpis article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr)) minmax(220px, 0.9fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+select,
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  font-weight: 750;
+  outline: none;
+}
+
+select {
+  min-width: 0;
+  width: 100%;
+  padding: 10px 12px;
+}
+
+select:focus,
+button:focus-visible,
+input:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 111, 187, 0.16);
+}
+
+button {
+  min-height: 36px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.ghost-button {
+  background: #f8fafb;
+  color: var(--blue);
+}
+
+.switch {
+  align-content: end;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  min-height: 61px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+}
+
+.switch input {
+  width: 18px;
+  height: 18px;
+}
+
+.month-panel {
+  padding: 15px;
+  margin-bottom: 14px;
+}
+
+.view-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.view-toggle span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.segmented-control {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: min(390px, 100%);
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #eef2f6;
+}
+
+.segmented-control button {
+  border: 0;
+  background: transparent;
+  color: #526071;
+}
+
+.segmented-control button.active {
+  background: #ffffff;
+  color: var(--blue);
+  box-shadow: 0 6px 18px rgba(23, 32, 42, 0.08);
+}
+
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.panel-head.compact {
+  margin-bottom: 12px;
+}
+
+.panel-head span,
+.kpis span,
+.seat-block span,
+.scenario-costs span,
+.person-summary span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.month-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.month-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.multi-select {
+  position: relative;
+  display: grid;
+  gap: 5px;
+}
+
+.multi-select-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  text-align: left;
+}
+
+.multi-select-summary {
+  min-height: 16px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-select-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 20;
+  display: none;
+  width: min(360px, 82vw);
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 22px 56px rgba(23, 32, 42, 0.18);
+}
+
+.multi-select.open .multi-select-menu {
+  display: grid;
+  gap: 6px;
+}
+
+.multi-option-list {
+  display: grid;
+  gap: 4px;
+  max-height: 260px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.multi-option {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #34404c;
+  text-align: left;
+}
+
+.multi-option:hover,
+.multi-option.selected {
+  background: #eef4fa;
+  color: var(--ink);
+}
+
+.multi-option input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.multi-select-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+
+.month-chip {
+  display: inline-flex;
+  grid-template-columns: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f9fafb;
+  color: #34404c;
+}
+
+.month-chip input {
+  margin: 0;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kpis article {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  padding: 16px;
+}
+
+.kpis strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: clamp(22px, 3vw, 31px);
+  line-height: 1.05;
+}
+
+.kpis small {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel {
+  min-width: 0;
+  padding: 16px;
+}
+
+.chart-panel {
+  position: relative;
+}
+
+.main-chart {
+  position: relative;
+  min-height: 392px;
+  overflow: hidden;
+}
+
+.main-chart svg {
+  width: 100%;
+  height: 380px;
+  display: block;
+}
+
+.chart-point {
+  cursor: pointer;
+}
+
+.axis,
+.tick {
+  stroke: #ccd4dc;
+  stroke-width: 1;
+}
+
+.tick-label {
+  fill: var(--muted);
+  font-size: 12px;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.legend span,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.chart-tooltip {
+  position: absolute;
+  z-index: 10;
+  display: grid;
+  gap: 4px;
+  min-width: 190px;
+  padding: 10px 12px;
+  border: 1px solid #ced7df;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 30px rgba(23, 32, 42, 0.16);
+  color: var(--ink);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.scenario-panel {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.seat-block {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1f5f8;
+}
+
+.seat-block div,
+.scenario-costs div,
+.person-summary div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.seat-block p,
+.plan-card p,
+.placeholder-note {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.range-label input {
+  width: 100%;
+  accent-color: var(--blue);
+}
+
+.range-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.scenario-costs,
+.person-summary,
+.subscription-list,
+.detail-card-list {
+  display: grid;
+  gap: 9px;
+}
+
+.scenario-costs div,
+.person-summary div,
+.subscription-list div,
+.detail-card-list div {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.metric-cards {
+  grid-template-columns: 1fr;
+}
+
+.metric-cards div,
+.detail-card-list div,
+.detail-action,
+.insight-card {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(23, 32, 42, 0.07);
+}
+
+.detail-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: auto;
+  color: var(--ink);
+  text-align: left;
+}
+
+.detail-action:hover {
+  border-color: rgba(47, 111, 187, 0.45);
+  background: #f8fbff;
+}
+
+.insight-card {
+  display: grid;
+  gap: 7px;
+  background: #f8fafb;
+}
+
+.insight-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.detail-card-list h3 {
+  margin-top: 6px;
+}
+
+.people-list {
+  display: grid;
+  gap: 8px;
+}
+
+.people-list div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.people-list span,
+.tag {
+  min-height: 24px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef2f6;
+  color: #44505f;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.people-list .active {
+  background: rgba(13, 139, 121, 0.13);
+  color: var(--green);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.grid.two {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+}
+
+.plan-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 0.8fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.pie-wrap {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.pie {
+  width: min(220px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 10px solid #f0f3f5;
+}
+
+.pie-legend {
+  display: grid;
+  gap: 7px;
+}
+
+.pie-legend button {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  border: 0;
+  background: transparent;
+  padding: 4px 0;
+  text-align: left;
+}
+
+.pie-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.pie-legend span,
+.bar-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bars {
+  display: grid;
+  gap: 9px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(140px, 2fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 34px;
+}
+
+.bar-row.clickable {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+}
+
+.bar-label {
+  font-size: 14px;
+  font-weight: 780;
+}
+
+.bar-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #e8edf1;
+  overflow: hidden;
+}
+
+.bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.bar-value {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 780;
+  white-space: nowrap;
+}
+
+.person-details {
+  display: grid;
+  gap: 14px;
+}
+
+.subscription-list div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.plan-card {
+  display: grid;
+  gap: 9px;
+}
+
+.plan-card > span {
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #eef2f6;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.plan-card.recommended {
+  border: 2px solid rgba(13, 139, 121, 0.55);
+  background: linear-gradient(180deg, #ffffff 0%, #f0faf7 100%);
+}
+
+.plan-card.recommended > span {
+  background: rgba(13, 139, 121, 0.13);
+  color: var(--green);
+}
+
+.plan-card ul {
+  margin: 2px 0 0;
+  padding-left: 19px;
+  color: #33404c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.summary-row {
+  background: #fbfcfd;
+}
+
+.detail-header td {
+  background: #eef2f6;
+  color: #44505f;
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.detail-row td {
+  background: #ffffff;
+}
+
+.detail-row small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.meta-lines {
+  display: grid;
+  gap: 4px;
+}
+
+.meta-lines span {
+  display: block;
+}
+
+.details-button {
+  min-height: 32px;
+  padding: 6px 10px;
+  background: #eef6ff;
+  color: var(--blue);
+}
+
+.proposal-builder {
+  margin-top: 16px;
+}
+
+.proposal-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.35fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.visual-options {
+  display: grid;
+  gap: 10px;
+}
+
+.visual-options label {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafb;
+  color: var(--ink);
+}
+
+.proposal-editor {
+  min-height: 360px;
+  max-height: 620px;
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  line-height: 1.5;
+}
+
+.proposal-editor h2,
+.proposal-editor h3 {
+  margin: 12px 0 8px;
+}
+
+.proposal-editor p {
+  margin-bottom: 10px;
+  color: #33404c;
+}
+
+table {
+  width: 100%;
+  min-width: 940px;
+  border-collapse: collapse;
+  background: white;
+}
+
+th,
+td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #eef2f6;
+  color: #44505f;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+tbody tr:hover {
+  background: #f8fafb;
+}
+
+.amount {
+  font-weight: 820;
+  white-space: nowrap;
+}
+
+.tag.hk {
+  background: rgba(47, 111, 187, 0.12);
+  color: var(--blue);
+}
+
+.tag.my {
+  background: rgba(13, 139, 121, 0.12);
+  color: var(--green);
+}
+
+.negative {
+  color: var(--red);
+}
+
+.empty {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 780;
+}
+
+.empty.small {
+  min-height: 120px;
+}
+
+@media (max-width: 1120px) {
+  .toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-grid,
+  .grid.two,
+  .plan-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .source-meta {
+    text-align: left;
+  }
+
+  .toolbar,
+  .kpis,
+  .detail-grid,
+  .proposal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .view-toggle {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bar-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Claude Team Proposal</p>
+        <h1>Software Licensing Cost Optimization</h1>
+      </div>
+      <div class="source-meta" id="sourceMeta"></div>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="Dashboard controls">
+        <label>
+          Display currency
+          <select id="currencySelect">
+            <option value="USD">USD</option>
+            <option value="HKD">HKD</option>
+            <option value="RM">RM</option>
+          </select>
+        </label>
+        <label>
+          Country
+          <select id="countryFilter">
+            <option value="all">Hong Kong + Malaysia</option>
+            <option value="HK">Hong Kong</option>
+            <option value="MY">Malaysia</option>
+          </select>
+        </label>
+        <label>
+          Employee
+          <select id="employeeFilter">
+            <option value="all">All employees</option>
+          </select>
+        </label>
+        <label>
+          Subscription
+          <div id="subscriptionDropdown" class="multi-select"></div>
+        </label>
+        <label class="switch">
+          <input id="compareToggle" type="checkbox" checked />
+          <span>Compare with Claude Team</span>
+        </label>
+      </section>
+
+      <section class="month-panel panel" aria-label="Month selector">
+        <div class="panel-head">
+          <div>
+            <h2>Month Selection</h2>
+            <span>Select one month or multiple months for an aggregate proposal view</span>
+          </div>
+          <div class="month-actions">
+            <button id="selectAllMonths" type="button">All</button>
+          </div>
+        </div>
+        <div id="monthChecks" class="month-checks"></div>
+      </section>
+
+      <section class="view-toggle panel" aria-label="Analysis view selector">
+        <div>
+          <h2>Analyze spend by</h2>
+          <span>Switch between who used the budget and which projects consumed the budget</span>
+        </div>
+        <div class="segmented-control">
+          <button id="employeeMode" class="active" type="button">Employee Usage</button>
+          <button id="projectMode" type="button">Project Usage</button>
+        </div>
+      </section>
+
+      <section class="kpis" aria-label="Key totals">
+        <article>
+          <span>Current spend</span>
+          <strong id="currentTotal">USD 0</strong>
+          <small id="currentOriginal">HKD 0 + RM 0</small>
+        </article>
+        <article>
+          <span>Proposed cost for period</span>
+          <strong id="proposedMonthly">USD 0</strong>
+          <small id="proposedFormula">0 seats + pool</small>
+        </article>
+        <article>
+          <span>Estimated saving</span>
+          <strong id="savingTotal">USD 0</strong>
+          <small id="savingRate">0%</small>
+        </article>
+        <article>
+          <span>Selected period</span>
+          <strong id="selectedMonthCount">0</strong>
+          <small id="selectedMonthLabel">No month</small>
+        </article>
+      </section>
+
+      <section class="hero-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Current Spend vs Claude Team</h2>
+              <span>Hover to compare values; click a month to focus details</span>
+            </div>
+            <span id="chartHint">Hover for values</span>
+          </div>
+          <div id="mainChart" class="main-chart" role="img" aria-label="Current spend versus proposed plan"></div>
+          <div id="chartTooltip" class="chart-tooltip" hidden></div>
+        </article>
+
+        <aside class="panel scenario-panel">
+          <div class="panel-head compact">
+            <div>
+              <h2>Seat Scenario</h2>
+              <span>Tech seats are fixed; operation seats are adjustable</span>
+            </div>
+          </div>
+          <div class="seat-block">
+            <div>
+              <span>Tech team seats</span>
+              <strong id="techSeats">11 fixed</strong>
+            </div>
+            <p>Each tech team member needs one Claude Team seat.</p>
+          </div>
+          <label class="range-label">
+            Operation seats
+            <input id="opsSeats" type="range" min="0" max="6" value="6" />
+          </label>
+          <div class="range-meta">
+            <span id="opsSeatValue">6 seats</span>
+            <span>usage uncertain</span>
+          </div>
+          <div class="scenario-costs">
+            <div>
+              <span>Cost per seat</span>
+              <strong>USD 20</strong>
+            </div>
+            <div>
+              <span>Extra token pool</span>
+              <strong>USD 500</strong>
+            </div>
+            <div>
+              <span>Scenario total</span>
+              <strong id="scenarioTotal">USD 840</strong>
+            </div>
+          </div>
+          <div class="people-list">
+            <h3>Tech team</h3>
+            <div id="techPeople"></div>
+            <h3>Operation candidates</h3>
+            <div id="opsPeople"></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <div class="panel-head">
+          <div>
+              <h2 id="detailTitle">Selected Period Breakdown</h2>
+              <span id="detailSubtitle">Cost share across selected months</span>
+            </div>
+            <button id="clearMonthFocus" class="ghost-button" type="button">Back to selected period</button>
+          </div>
+          <div class="detail-grid">
+            <div id="employeePie" class="pie-wrap"></div>
+            <div id="employeeBreakdown" class="bars"></div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="personTitle">Usage Details</h2>
+              <span id="personSubtitle">Click an employee or project to inspect spend</span>
+            </div>
+          </div>
+          <div id="personDetails" class="person-details"></div>
+        </article>
+      </section>
+
+      <section class="plan-comparison">
+        <article class="panel plan-card recommended">
+          <span>Recommended</span>
+          <h2>Claude Team Standard</h2>
+          <strong>USD 20 / user / month</strong>
+          <p>Best fit for this proposal: lower predictable cost, centralized billing, usage export, recoverable company-owned accounts, and a fixed monthly extra token pool.</p>
+          <ul>
+            <li>Solves the current monitoring gap: today we cannot clearly see each person's project focus and spend focus</li>
+            <li>Supports seat recovery when employees leave</li>
+            <li>Claude admin exports can become monthly employee and project usage reports</li>
+          </ul>
+        </article>
+        <article class="panel plan-card">
+          <span>Current shortage</span>
+          <h2>Fragmented Subscriptions</h2>
+          <strong>Manual reporting</strong>
+          <p>Spend is spread across employees and tools, so project focus, heavy users, and account ownership require manual consolidation.</p>
+        </article>
+        <article class="panel plan-card">
+          <span>Return measurement</span>
+          <h2>What We Can Measure</h2>
+          <strong>Cost return now, usage return next</strong>
+          <p>Now we can measure cost by project and expected savings. With Claude exports, future reports can measure usage by employee and project.</p>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-head">
+          <div>
+            <h2>Monthly Cost Summary</h2>
+            <span>Start from monthly totals; open details only when needed</span>
+          </div>
+          <span id="rowCount">0 rows</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Current total</th>
+                <th>Proposed total</th>
+                <th>Estimated saving</th>
+                <th>Saving rate</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="detailRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel proposal-builder" aria-label="Proposal report builder">
+        <div class="panel-head">
+          <div>
+            <h2>Management Proposal Builder</h2>
+            <span>Edit the narrative, choose dashboard visuals, then download a proposal for management review</span>
+          </div>
+          <button id="downloadProposal" type="button">Download proposal</button>
+        </div>
+        <div class="proposal-grid">
+          <div>
+            <h3>Include visuals</h3>
+            <div class="visual-options">
+              <label><input type="checkbox" value="trend" checked /> Current Spend vs Claude Team trend</label>
+              <label><input type="checkbox" value="seat" checked /> Seat Scenario</label>
+              <label><input type="checkbox" value="breakdown" checked /> Current breakdown view</label>
+              <label><input type="checkbox" value="monthly" checked /> Monthly Cost Summary</label>
+              <label><input type="checkbox" value="recommendation" checked /> Recommendation and return measurement</label>
+            </div>
+          </div>
+          <div>
+            <h3>Editable proposal text</h3>
+            <div id="proposalText" class="proposal-editor" contenteditable="true"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+window.DASHBOARD_DATA = {
+  "sourceFile": "/Users/nerolifu/Downloads/Summary of software licensing (1).xlsx",
+  "generatedAt": "2026-06-03T17:25:54",
+  "rows": [
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2025-02",
+      "amount": 79.44,
+      "total": 79.44,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.44
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-07",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": "Subtotal USD19.99 Tax USD1.22"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-08",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-09",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2025-09",
+      "amount": 79.42,
+      "total": 79.42,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.42
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-09",
+      "amount": 85.76,
+      "total": 85.76,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 85.76
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Bryan",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-09",
+      "amount": 79.54,
+      "total": 79.54,
+      "projects": [
+        "VIO + Mini APP",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 26.51
+        },
+        {
+          "project": "TBPP",
+          "total": 26.51
+        },
+        {
+          "project": "TDTLP",
+          "total": 26.52
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-09",
+      "amount": 79.47,
+      "total": 79.47,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.47
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-10",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-10",
+      "amount": 85.77,
+      "total": 85.77,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 85.77
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Bryan",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-10",
+      "amount": 79.55,
+      "total": 79.55,
+      "projects": [
+        "VIO + Mini APP",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 26.52
+        },
+        {
+          "project": "TBPP",
+          "total": 26.52
+        },
+        {
+          "project": "TDTLP",
+          "total": 26.51
+        }
+      ],
+      "supportUser": 1,
+      "remark": "left Jan 2026"
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-10",
+      "amount": 99.9,
+      "total": 99.9,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.96
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-10",
+      "amount": 79.48,
+      "total": 79.48,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.48
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Viyi",
+      "vendor": "OpenAI",
+      "plan": "Go",
+      "subscription": "OpenAI - Go",
+      "month": "2025-10",
+      "amount": 38.99,
+      "total": 38.99,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 13.0
+        },
+        {
+          "project": "TBPP",
+          "total": 13.0
+        },
+        {
+          "project": "Documentation",
+          "total": 12.99
+        }
+      ],
+      "supportUser": 1,
+      "remark": "left"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-11",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2025-11",
+      "amount": 79.43,
+      "total": 79.43,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.43
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-11",
+      "amount": 85.78,
+      "total": 85.78,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 85.78
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-11",
+      "amount": 99.91,
+      "total": 99.91,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.97
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-11",
+      "amount": 79.42,
+      "total": 79.42,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 79.42
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2025-12",
+      "amount": 1570.0,
+      "total": 1570.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 392.5
+        },
+        {
+          "project": "VouChain",
+          "total": 392.5
+        },
+        {
+          "project": "TBPP",
+          "total": 392.5
+        },
+        {
+          "project": "TDTLP",
+          "total": 392.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2025-12",
+      "amount": 794.1,
+      "total": 794.1,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.1
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2025-12",
+      "amount": 99.92,
+      "total": 99.92,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.98
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2025-12",
+      "amount": 79.49,
+      "total": 79.49,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.49
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Xian Lim",
+      "vendor": "ShinJiru",
+      "plan": "Yearly",
+      "subscription": "ShinJiru - Yearly",
+      "month": "2025-12",
+      "amount": 63.61,
+      "total": 63.61,
+      "projects": [
+        "Domain registration"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Domain registration",
+          "total": 63.61
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Annie",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 156.75,
+      "total": 156.75,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 156.75
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 162.21,
+      "total": 162.21,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 162.21
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Plus",
+      "subscription": "Cursor - Plus",
+      "month": "2026-01",
+      "amount": 486.62,
+      "total": 486.62,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 486.62
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-01",
+      "amount": 3180.6,
+      "total": 3180.6,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 795.15
+        },
+        {
+          "project": "VouChain",
+          "total": 795.15
+        },
+        {
+          "project": "TBPP",
+          "total": 795.15
+        },
+        {
+          "project": "TDTLP",
+          "total": 795.15
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-01",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-01",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 39.77
+        },
+        {
+          "project": "VouChain",
+          "total": 39.77
+        },
+        {
+          "project": "TBPP",
+          "total": 39.77
+        },
+        {
+          "project": "TDTLP",
+          "total": 39.79
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-01",
+      "amount": 157.0,
+      "total": 157.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 157.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-01",
+      "amount": 794.1,
+      "total": 794.1,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.1
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Lemon Squeezy",
+      "plan": "Screen Studio",
+      "subscription": "Lemon Squeezy - Screen Studio",
+      "month": "2026-01",
+      "amount": 124.36,
+      "total": 124.36,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 124.36
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-01",
+      "amount": 99.93,
+      "total": 99.93,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 24.99
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 79.43,
+      "total": 79.43,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 79.43
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-01",
+      "amount": 79.5,
+      "total": 79.5,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.5
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Andy",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-02",
+      "amount": 1701.36,
+      "total": 1701.36,
+      "projects": [
+        "VIO + Mini APP",
+        "Co+Pay",
+        "MCP Service"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 567.12
+        },
+        {
+          "project": "Co+Pay",
+          "total": 567.12
+        },
+        {
+          "project": "MCP Service",
+          "total": 567.12
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-02",
+      "amount": 186.7,
+      "total": 186.7,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 186.7
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-02",
+      "amount": 1571.0,
+      "total": 1571.0,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 1571.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 171.0,
+      "total": 171.0,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 57.0
+        },
+        {
+          "project": "VouChain",
+          "total": 57.0
+        },
+        {
+          "project": "Documentation",
+          "total": 57.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-02",
+      "amount": 3742.7,
+      "total": 3742.7,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 935.67
+        },
+        {
+          "project": "VouChain",
+          "total": 935.67
+        },
+        {
+          "project": "TBPP",
+          "total": 935.67
+        },
+        {
+          "project": "TDTLP",
+          "total": 935.69
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-02",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VIO + Mini APP",
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 39.77
+        },
+        {
+          "project": "VouChain",
+          "total": 39.77
+        },
+        {
+          "project": "TBPP",
+          "total": 39.77
+        },
+        {
+          "project": "TDTLP",
+          "total": 39.79
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 156.0,
+      "total": 156.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 156.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-02",
+      "amount": 794.12,
+      "total": 794.12,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.12
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Lemon Squeezy",
+      "plan": "Screen Studio",
+      "subscription": "Lemon Squeezy - Screen Studio",
+      "month": "2026-02",
+      "amount": 124.37,
+      "total": 124.37,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 124.37
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 99.94,
+      "total": 99.94,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.98
+        },
+        {
+          "project": "TBPP",
+          "total": 24.98
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.98
+        },
+        {
+          "project": "Documentation",
+          "total": 25.0
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-02",
+      "amount": 79.44,
+      "total": 79.44,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 79.44
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-02",
+      "amount": 79.51,
+      "total": 79.51,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.51
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Wan Yee",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-02",
+      "amount": 99.9,
+      "total": 99.9,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 33.3
+        },
+        {
+          "project": "TBPP",
+          "total": 33.3
+        },
+        {
+          "project": "Documentation",
+          "total": 33.3
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "vendor": "OpenAI",
+      "plan": "Go",
+      "subscription": "OpenAI - Go",
+      "month": "2026-02",
+      "amount": 24.0,
+      "total": 24.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 24.0
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Eva",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-03",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "Tokenized Horizon"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Tokenized Horizon",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-03",
+      "amount": 189.15,
+      "total": 189.15,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 189.15
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 3863.31,
+      "total": 3863.31,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 3863.31
+        }
+      ],
+      "supportUser": "",
+      "remark": "On-demand usage"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 2492.1,
+      "total": 2492.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 830.7
+        },
+        {
+          "project": "TBPP",
+          "total": 830.7
+        },
+        {
+          "project": "TDTLP",
+          "total": 830.7
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-03",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 53.03
+        },
+        {
+          "project": "TBPP",
+          "total": 53.03
+        },
+        {
+          "project": "TDTLP",
+          "total": 53.04
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "Fireflies",
+      "plan": "Unspecified",
+      "subscription": "Fireflies",
+      "month": "2026-03",
+      "amount": 163.0,
+      "total": 163.0,
+      "projects": [
+        "SOC2",
+        "Lingnan Strategic Consulting Programme"
+      ],
+      "projectAllocations": [
+        {
+          "project": "SOC2",
+          "total": 81.5
+        },
+        {
+          "project": "Lingnan Strategic Consulting Programme",
+          "total": 81.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 156.0,
+      "total": 156.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 156.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Peggy",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 1591.0,
+      "total": 1591.0,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 1591.0
+        }
+      ],
+      "supportUser": "",
+      "remark": "design team"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 1588.97,
+      "total": 1588.97,
+      "projects": [
+        "VIO + Mini APP",
+        "Layer 2",
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 529.66
+        },
+        {
+          "project": "Layer 2",
+          "total": 529.66
+        },
+        {
+          "project": "TBPP",
+          "total": 529.65
+        }
+      ],
+      "supportUser": "Tristan",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-03",
+      "amount": 794.13,
+      "total": 794.13,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.13
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 99.95,
+      "total": 99.95,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.99
+        },
+        {
+          "project": "TBPP",
+          "total": 24.99
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.99
+        },
+        {
+          "project": "Documentation",
+          "total": 24.98
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-03",
+      "amount": 79.45,
+      "total": 79.45,
+      "projects": [
+        "NGMT"
+      ],
+      "projectAllocations": [
+        {
+          "project": "NGMT",
+          "total": 79.45
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-03",
+      "amount": 79.52,
+      "total": 79.52,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.52
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Wan Yee",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-03",
+      "amount": 99.91,
+      "total": 99.91,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 33.3
+        },
+        {
+          "project": "TBPP",
+          "total": 33.3
+        },
+        {
+          "project": "Documentation",
+          "total": 33.31
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-03",
+      "amount": 79.41,
+      "total": 238.23,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 79.41
+        },
+        {
+          "project": "TBPP",
+          "total": 79.41
+        },
+        {
+          "project": "Documentation",
+          "total": 79.41
+        }
+      ],
+      "supportUser": 3,
+      "remark": "Yi Xiong, Howel and Athira"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Eva",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-04",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "Tokenized Horizon"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Tokenized Horizon",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-04",
+      "amount": 184.87,
+      "total": 184.87,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 184.87
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 3536.65,
+      "total": 3536.65,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 3536.65
+        }
+      ],
+      "supportUser": "",
+      "remark": "On-demand usage"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 677.8,
+      "total": 677.8,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 225.93
+        },
+        {
+          "project": "TBPP",
+          "total": 225.93
+        },
+        {
+          "project": "TDTLP",
+          "total": 225.94
+        }
+      ],
+      "supportUser": "",
+      "remark": "with refund"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-04",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-04",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 53.03
+        },
+        {
+          "project": "TBPP",
+          "total": 53.03
+        },
+        {
+          "project": "TDTLP",
+          "total": 53.04
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "Fireflies",
+      "plan": "Unspecified",
+      "subscription": "Fireflies",
+      "month": "2026-04",
+      "amount": 163.0,
+      "total": 163.0,
+      "projects": [
+        "SOC2",
+        "Lingnan Strategic Consulting Programme"
+      ],
+      "projectAllocations": [
+        {
+          "project": "SOC2",
+          "total": 81.5
+        },
+        {
+          "project": "Lingnan Strategic Consulting Programme",
+          "total": 81.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-04",
+      "amount": 156.0,
+      "total": 156.0,
+      "projects": [
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Documentation",
+          "total": 156.0
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Peggy",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 1591.0,
+      "total": 1591.0,
+      "projects": [
+        "VIO + Mini APP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 1591.0
+        }
+      ],
+      "supportUser": "",
+      "remark": "design team"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 1579.95,
+      "total": 1579.95,
+      "projects": [
+        "VIO + Mini APP",
+        "Layer 2",
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VIO + Mini APP",
+          "total": 526.65
+        },
+        {
+          "project": "Layer 2",
+          "total": 526.65
+        },
+        {
+          "project": "TBPP",
+          "total": 526.65
+        }
+      ],
+      "supportUser": "Tristan",
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-04",
+      "amount": 794.14,
+      "total": 794.14,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 794.14
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Carol",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-04",
+      "amount": 99.96,
+      "total": 99.96,
+      "projects": [
+        "TDTLP",
+        "TBPP",
+        "VIO + Mini APP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 24.99
+        },
+        {
+          "project": "TBPP",
+          "total": 24.99
+        },
+        {
+          "project": "VIO + Mini APP",
+          "total": 24.99
+        },
+        {
+          "project": "Documentation",
+          "total": 24.99
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-04",
+      "amount": 79.46,
+      "total": 79.46,
+      "projects": [
+        "NGMT"
+      ],
+      "projectAllocations": [
+        {
+          "project": "NGMT",
+          "total": 79.46
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "subscription": "Cursor - Pro",
+      "month": "2026-04",
+      "amount": 79.53,
+      "total": 79.53,
+      "projects": [
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TBPP",
+          "total": 79.53
+        }
+      ],
+      "supportUser": 1,
+      "remark": ""
+    },
+    {
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-04",
+      "amount": 79.42,
+      "total": 238.26,
+      "projects": [
+        "TDTLP",
+        "Documentation"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 119.13
+        },
+        {
+          "project": "Documentation",
+          "total": 119.13
+        }
+      ],
+      "supportUser": 3,
+      "remark": "Yi Xiong, Howel and Athira"
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Eva",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-05",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "Tokenized Horizon"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Tokenized Horizon",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Hong",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "subscription": "Claude - Pro",
+      "month": "2026-05",
+      "amount": 158.5,
+      "total": 158.5,
+      "projects": [
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "TDTLP",
+          "total": 158.5
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-05",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "subscription": "OpenAI - Plus",
+      "month": "2026-05",
+      "amount": 159.1,
+      "total": 159.1,
+      "projects": [
+        "VouChain",
+        "TBPP",
+        "TDTLP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "VouChain",
+          "total": 53.03
+        },
+        {
+          "project": "TBPP",
+          "total": 53.03
+        },
+        {
+          "project": "TDTLP",
+          "total": 53.04
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "subscription": "Cursor - Ultra",
+      "month": "2026-05",
+      "amount": 1573.7,
+      "total": 1573.7,
+      "projects": [
+        "Layer 2",
+        "TBPP"
+      ],
+      "projectAllocations": [
+        {
+          "project": "Layer 2",
+          "total": 786.85
+        },
+        {
+          "project": "TBPP",
+          "total": 786.85
+        }
+      ],
+      "supportUser": "Tristan",
+      "remark": ""
+    },
+    {
+      "country": "Hong Kong",
+      "countryCode": "HK",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "subscription": "Netlify",
+      "month": "2026-06",
+      "amount": 71.6,
+      "total": 71.6,
+      "projects": [
+        "HR Systems"
+      ],
+      "projectAllocations": [
+        {
+          "project": "HR Systems",
+          "total": 71.6
+        }
+      ],
+      "supportUser": "",
+      "remark": ""
+    }
+  ],
+  "monthlyByCountry": [
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-02",
+      "total": 79.44
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-07",
+      "total": 171.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-08",
+      "total": 171.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-09",
+      "total": 171.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-09",
+      "total": 324.19
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-10",
+      "total": 171.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-10",
+      "total": 383.69
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-11",
+      "total": 171.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-11",
+      "total": 344.54
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2025-12",
+      "total": 1570.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2025-12",
+      "total": 1037.12
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-01",
+      "total": 4373.88
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-01",
+      "total": 1177.32
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-02",
+      "total": 7759.46
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-02",
+      "total": 1301.28
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-03",
+      "total": 10432.73
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-03",
+      "total": 1391.19
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-04",
+      "total": 8278.47
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "month": "2026-04",
+      "total": 1291.35
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-05",
+      "total": 2121.4
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "month": "2026-06",
+      "total": 71.6
+    }
+  ],
+  "employeeTotals": [
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Meiyu",
+      "total": 12888.3
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Katherine",
+      "total": 10180.51
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Tristan",
+      "total": 4742.62
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Alvin Loh",
+      "total": 4714.92
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Peggy",
+      "total": 3182.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Andy",
+      "total": 1701.36
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Kelly",
+      "total": 1026.0
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Nancy",
+      "total": 951.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Carol",
+      "total": 699.51
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Guo Foong",
+      "total": 556.5
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Yi Xiong",
+      "total": 500.49
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Eva",
+      "total": 475.5
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Eddie Ling",
+      "total": 397.2
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Wan Yee",
+      "total": 199.81
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Bryan",
+      "total": 159.09
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Hong",
+      "total": 158.5
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "employee": "Annie",
+      "total": 156.75
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Xian Lim",
+      "total": 63.61
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "employee": "Viyi",
+      "total": 38.99
+    }
+  ],
+  "subscriptionTotals": [
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Cursor - Ultra",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "total": 28558.78
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Cursor - Ultra",
+      "vendor": "Cursor",
+      "plan": "Ultra",
+      "total": 3970.59
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Claude - Pro",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "total": 2579.08
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "OpenAI - Plus",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "total": 2446.5
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "OpenAI - Plus",
+      "vendor": "OpenAI",
+      "plan": "Plus",
+      "total": 1156.63
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Cursor - Pro",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "total": 1112.79
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Claude - Pro",
+      "vendor": "Claude",
+      "plan": "Pro",
+      "total": 714.78
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Cursor - Pro",
+      "vendor": "Cursor",
+      "plan": "Pro",
+      "total": 635.96
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Cursor - Plus",
+      "vendor": "Cursor",
+      "plan": "Plus",
+      "total": 486.62
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Netlify",
+      "vendor": "Netlify",
+      "plan": "Unspecified",
+      "total": 429.6
+    },
+    {
+      "countryCode": "HK",
+      "country": "Hong Kong",
+      "currency": "HKD",
+      "subscription": "Fireflies",
+      "vendor": "Fireflies",
+      "plan": "Unspecified",
+      "total": 326.0
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "Lemon Squeezy - Screen Studio",
+      "vendor": "Lemon Squeezy",
+      "plan": "Screen Studio",
+      "total": 248.73
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "ShinJiru - Yearly",
+      "vendor": "ShinJiru",
+      "plan": "Yearly",
+      "total": 63.61
+    },
+    {
+      "countryCode": "MY",
+      "country": "Malaysia",
+      "currency": "RM",
+      "subscription": "OpenAI - Go",
+      "vendor": "OpenAI",
+      "plan": "Go",
+      "total": 62.99
+    }
+  ]
+};
+</script>
+<script type="module">
+const CONFIG = {
+  rates: { USD: 1, HKD: 7.8, RM: 4.7 },
+  proposed: {
+    pricePerSeatUsd: 20,
+    extraPoolUsd: 500,
+    techSeats: 11,
+    maxOpsSeats: 6,
+    techPeople: ["Yixiong", "Alvin", "Kai Lun", "Athira", "Andy", "Vivienne", "Set Yan", "Guo Feng", "Tristan", "Andy Lim", "Meiyu"],
+    opsPeople: ["Eva", "Nancy", "Hong", "Beranrd", "Carol", "Ong"],
+  },
+};
+
+const state = {
+  rows: [],
+  selectedMonths: [],
+  activeMonth: "",
+  activeEmployee: "",
+  activeProject: "",
+  expandedMonth: "",
+  analysisMode: "employee",
+  displayCurrency: "USD",
+  compareProposed: true,
+  country: "all",
+  employee: "all",
+  subscriptions: [],
+  opsSeats: 6,
+};
+
+const els = {
+  sourceMeta: document.querySelector("#sourceMeta"),
+  currencySelect: document.querySelector("#currencySelect"),
+  countryFilter: document.querySelector("#countryFilter"),
+  employeeFilter: document.querySelector("#employeeFilter"),
+  subscriptionDropdown: document.querySelector("#subscriptionDropdown"),
+  compareToggle: document.querySelector("#compareToggle"),
+  monthChecks: document.querySelector("#monthChecks"),
+  selectAllMonths: document.querySelector("#selectAllMonths"),
+  employeeMode: document.querySelector("#employeeMode"),
+  projectMode: document.querySelector("#projectMode"),
+  currentTotal: document.querySelector("#currentTotal"),
+  currentOriginal: document.querySelector("#currentOriginal"),
+  proposedMonthly: document.querySelector("#proposedMonthly"),
+  proposedFormula: document.querySelector("#proposedFormula"),
+  savingTotal: document.querySelector("#savingTotal"),
+  savingRate: document.querySelector("#savingRate"),
+  selectedMonthCount: document.querySelector("#selectedMonthCount"),
+  selectedMonthLabel: document.querySelector("#selectedMonthLabel"),
+  mainChart: document.querySelector("#mainChart"),
+  chartTooltip: document.querySelector("#chartTooltip"),
+  opsSeats: document.querySelector("#opsSeats"),
+  opsSeatValue: document.querySelector("#opsSeatValue"),
+  scenarioTotal: document.querySelector("#scenarioTotal"),
+  techPeople: document.querySelector("#techPeople"),
+  opsPeople: document.querySelector("#opsPeople"),
+  detailTitle: document.querySelector("#detailTitle"),
+  detailSubtitle: document.querySelector("#detailSubtitle"),
+  employeePie: document.querySelector("#employeePie"),
+  employeeBreakdown: document.querySelector("#employeeBreakdown"),
+  personTitle: document.querySelector("#personTitle"),
+  personSubtitle: document.querySelector("#personSubtitle"),
+  personDetails: document.querySelector("#personDetails"),
+  clearMonthFocus: document.querySelector("#clearMonthFocus"),
+  detailRows: document.querySelector("#detailRows"),
+  rowCount: document.querySelector("#rowCount"),
+  proposalText: document.querySelector("#proposalText"),
+  downloadProposal: document.querySelector("#downloadProposal"),
+};
+
+const colors = ["#2f6fbb", "#0d8b79", "#c48321", "#b94747", "#7357a8", "#3f7f5f", "#8c6251", "#476b85"];
+const BREAKDOWN_LIMIT = 10;
+
+const countryName = { HK: "Hong Kong", MY: "Malaysia" };
+
+function unique(values) {
+  return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function monthLabel(month) {
+  const [year, mon] = month.split("-");
+  return `${year}.${mon}`;
+}
+
+function monthIndex(month) {
+  const [year, mon] = month.split("-").map(Number);
+  return year * 12 + mon;
+}
+
+function selectedPeriodLabel() {
+  const months = [...state.selectedMonths].sort();
+  if (!months.length) return "No month selected";
+  if (months.length === 1) return monthLabel(months[0]);
+  const isContinuous = months.every((month, index) => index === 0 || monthIndex(month) === monthIndex(months[index - 1]) + 1);
+  return isContinuous ? `${monthLabel(months[0])} - ${monthLabel(months.at(-1))}` : months.map(monthLabel).join(", ");
+}
+
+function detailPeriodLabel() {
+  return state.activeMonth ? monthLabel(state.activeMonth) : selectedPeriodLabel();
+}
+
+function monthsLabel(months) {
+  const sorted = unique(months);
+  if (!sorted.length) return "No active months";
+  if (sorted.length === 1) return monthLabel(sorted[0]);
+  const isContinuous = sorted.every((month, index) => index === 0 || monthIndex(month) === monthIndex(sorted[index - 1]) + 1);
+  return isContinuous ? `${monthLabel(sorted[0])} - ${monthLabel(sorted.at(-1))}` : sorted.map(monthLabel).join(", ");
+}
+
+function money(value, currency = state.displayCurrency) {
+  return `${currency} ${value.toLocaleString(undefined, {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: value % 1 ? 2 : 0,
+  })}`;
+}
+
+function toUsd(value, currency) {
+  return value / CONFIG.rates[currency];
+}
+
+function fromUsd(value, currency = state.displayCurrency) {
+  return value * CONFIG.rates[currency];
+}
+
+function rowUsd(row) {
+  return toUsd(row.total, row.currency);
+}
+
+function rowDisplay(row) {
+  return fromUsd(rowUsd(row));
+}
+
+function allocationDisplay(row, allocation) {
+  return fromUsd(toUsd(allocation.total, row.currency));
+}
+
+function proposedMonthlyUsd() {
+  return (CONFIG.proposed.techSeats + state.opsSeats) * CONFIG.proposed.pricePerSeatUsd + CONFIG.proposed.extraPoolUsd;
+}
+
+function selectedRows() {
+  return state.rows.filter((row) => {
+    return (
+      state.selectedMonths.includes(row.month) &&
+      (state.country === "all" || row.countryCode === state.country) &&
+      (state.employee === "all" || row.employee === state.employee) &&
+      (!state.subscriptions.length || state.subscriptions.includes(row.subscription))
+    );
+  });
+}
+
+function monthRows(month) {
+  return selectedRows().filter((row) => row.month === month);
+}
+
+function groupRows(rows, keys, valueGetter = rowDisplay) {
+  const map = new Map();
+  rows.forEach((row) => {
+    const id = keys.map((key) => row[key]).join("||");
+    if (!map.has(id)) {
+      map.set(id, { total: 0 });
+      keys.forEach((key) => {
+        map.get(id)[key] = row[key];
+      });
+    }
+    map.get(id).total += valueGetter(row);
+  });
+  return [...map.values()].map((row) => ({ ...row, total: Math.round(row.total * 100) / 100 }));
+}
+
+function projectAllocations(rows) {
+  return rows.flatMap((row) =>
+    (row.projectAllocations || [{ project: "Unassigned", total: row.total }]).map((allocation) => ({
+      ...row,
+      project: allocation.project,
+      allocationTotal: allocation.total,
+      displayTotal: allocationDisplay(row, allocation),
+    })),
+  );
+}
+
+function groupProjectAllocations(rows, keys) {
+  const map = new Map();
+  projectAllocations(rows).forEach((row) => {
+    const id = keys.map((key) => row[key]).join("||");
+    if (!map.has(id)) {
+      map.set(id, { total: 0, employees: new Set(), subscriptions: new Set(), months: new Set() });
+      keys.forEach((key) => {
+        map.get(id)[key] = row[key];
+      });
+    }
+    const item = map.get(id);
+    item.total += row.displayTotal;
+    item.employees.add(row.employee);
+    item.subscriptions.add(row.subscription);
+    item.months.add(row.month);
+  });
+  return [...map.values()].map((row) => ({
+    ...row,
+    total: Math.round(row.total * 100) / 100,
+    contributorCount: row.employees.size,
+    subscriptionCount: row.subscriptions.size,
+    monthCount: row.months.size,
+  }));
+}
+
+function groupAllocationRows(allocationRows, keys) {
+  const map = new Map();
+  allocationRows.forEach((row) => {
+    const id = keys.map((key) => row[key]).join("||");
+    if (!map.has(id)) {
+      map.set(id, { total: 0 });
+      keys.forEach((key) => {
+        map.get(id)[key] = row[key];
+      });
+    }
+    map.get(id).total += row.displayTotal;
+  });
+  return [...map.values()].map((row) => ({ ...row, total: Math.round(row.total * 100) / 100 }));
+}
+
+function topWithOthers(grouped, limit = BREAKDOWN_LIMIT) {
+  const sorted = [...grouped].sort((a, b) => b.total - a.total);
+  if (sorted.length <= limit) return sorted;
+  const visible = sorted.slice(0, limit - 1);
+  const rest = sorted.slice(limit - 1);
+  visible.push({
+    [Object.keys(sorted[0]).find((key) => !["total", "contributorCount", "subscriptionCount", "monthCount"].includes(key)) || "name"]: "Others",
+    employee: "Others",
+    project: "Others",
+    subscription: "Others",
+    total: Math.round(rest.reduce((sum, row) => sum + row.total, 0) * 100) / 100,
+    children: rest,
+  });
+  return visible;
+}
+
+function sumDisplay(rows) {
+  return rows.reduce((total, row) => total + rowDisplay(row), 0);
+}
+
+function setOptions(select, values, allLabel, current) {
+  select.innerHTML = `<option value="all">${allLabel}</option>${values
+    .map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`)
+    .join("")}`;
+  select.value = values.includes(current) ? current : "all";
+  return select.value;
+}
+
+function populateFilters() {
+  const countryRows = state.rows.filter((row) => state.country === "all" || row.countryCode === state.country);
+  state.employee = setOptions(els.employeeFilter, unique(countryRows.map((row) => row.employee)), "All employees", state.employee);
+  renderSubscriptionDropdown(unique(countryRows.map((row) => row.subscription)));
+}
+
+function subscriptionSummary(values) {
+  if (!state.subscriptions.length) {
+    return { button: "All subscriptions", selected: "All subscriptions included" };
+  }
+  const selected = state.subscriptions.filter((subscription) => values.includes(subscription));
+  if (selected.length <= 2) {
+    return { button: `${selected.length} selected`, selected: selected.join(", ") };
+  }
+  return {
+    button: `${selected.length} selected`,
+    selected: `${selected.slice(0, 2).join(", ")} +${selected.length - 2} more`,
+  };
+}
+
+function renderSubscriptionDropdown(values) {
+  state.subscriptions = state.subscriptions.filter((subscription) => values.includes(subscription));
+  const summary = subscriptionSummary(values);
+  const isOpen = els.subscriptionDropdown?.classList.contains("open");
+  els.subscriptionDropdown.innerHTML = `
+    <button class="multi-select-button" type="button" aria-haspopup="listbox" aria-expanded="${isOpen ? "true" : "false"}">
+      <span>${escapeHtml(summary.button)}</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <small class="multi-select-summary">${escapeHtml(summary.selected)}</small>
+    <div class="multi-select-menu" role="listbox" aria-label="Subscription filter">
+      <button class="multi-option ${state.subscriptions.length ? "" : "selected"}" type="button" data-value="all" role="option" aria-selected="${state.subscriptions.length ? "false" : "true"}">
+        <input type="checkbox" tabindex="-1" ${state.subscriptions.length ? "" : "checked"} />
+        <span>All subscriptions</span>
+      </button>
+      <div class="multi-option-list">
+    ${values
+      .map(
+        (value) =>
+          `<button class="multi-option ${state.subscriptions.includes(value) ? "selected" : ""}" type="button" data-value="${escapeHtml(value)}" role="option" aria-selected="${state.subscriptions.includes(value) ? "true" : "false"}">
+            <input type="checkbox" tabindex="-1" ${state.subscriptions.includes(value) ? "checked" : ""} />
+            <span>${escapeHtml(value)}</span>
+          </button>`,
+      )
+      .join("")}
+      </div>
+      <div class="multi-select-actions">
+        <button type="button" data-action="clear">Clear</button>
+        <button type="button" data-action="apply">Apply</button>
+      </div>
+    </div>`;
+
+  if (isOpen) els.subscriptionDropdown.classList.add("open");
+
+  els.subscriptionDropdown.querySelector(".multi-select-button").addEventListener("click", (event) => {
+    event.stopPropagation();
+    els.subscriptionDropdown.classList.toggle("open");
+    const expanded = els.subscriptionDropdown.classList.contains("open");
+    els.subscriptionDropdown.querySelector(".multi-select-button").setAttribute("aria-expanded", String(expanded));
+  });
+
+  els.subscriptionDropdown.querySelectorAll("[data-value]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const value = button.dataset.value;
+      if (value === "all") {
+        state.subscriptions = [];
+      } else {
+        const selected = new Set(state.subscriptions);
+        if (selected.has(value)) selected.delete(value);
+        else selected.add(value);
+        state.subscriptions = [...selected];
+      }
+      state.activeEmployee = "";
+      state.activeProject = "";
+      render();
+      els.subscriptionDropdown.classList.add("open");
+    });
+  });
+
+  els.subscriptionDropdown.querySelector('[data-action="clear"]').addEventListener("click", (event) => {
+    event.stopPropagation();
+    state.subscriptions = [];
+    state.activeEmployee = "";
+    state.activeProject = "";
+    render();
+  });
+
+  els.subscriptionDropdown.querySelector('[data-action="apply"]').addEventListener("click", (event) => {
+    event.stopPropagation();
+    els.subscriptionDropdown.classList.remove("open");
+  });
+}
+
+function renderMonthChecks() {
+  const months = unique(state.rows.map((row) => row.month));
+  els.monthChecks.innerHTML = months
+    .map(
+      (month) => `
+        <label class="month-chip">
+          <input type="checkbox" value="${month}" ${state.selectedMonths.includes(month) ? "checked" : ""} />
+          <span>${monthLabel(month)}</span>
+        </label>`,
+    )
+    .join("");
+
+  els.monthChecks.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("change", () => {
+      const month = input.value;
+      if (input.checked) {
+        state.selectedMonths = unique([...state.selectedMonths, month]);
+      } else {
+        state.selectedMonths = state.selectedMonths.filter((item) => item !== month);
+      }
+      state.activeMonth = "";
+      state.activeEmployee = "";
+      state.activeProject = "";
+      state.expandedMonth = "";
+      render();
+    });
+  });
+}
+
+function renderKpis(rows) {
+  const total = sumDisplay(rows);
+  const proposedTotal = fromUsd(proposedMonthlyUsd() * state.selectedMonths.length);
+  const saving = total - proposedTotal;
+  const hk = rows.filter((row) => row.countryCode === "HK").reduce((sum, row) => sum + row.total, 0);
+  const my = rows.filter((row) => row.countryCode === "MY").reduce((sum, row) => sum + row.total, 0);
+  const savingPct = total > 0 ? (saving / total) * 100 : 0;
+
+  els.currentTotal.textContent = money(total);
+  els.currentOriginal.textContent = `${money(hk, "HKD")} + ${money(my, "RM")}`;
+  els.proposedMonthly.textContent = money(proposedTotal);
+  els.proposedFormula.textContent = `${money(fromUsd(proposedMonthlyUsd()))} monthly x ${state.selectedMonths.length} month${state.selectedMonths.length === 1 ? "" : "s"}`;
+  els.savingTotal.textContent = money(saving);
+  els.savingTotal.classList.toggle("negative", saving < 0);
+  els.savingRate.textContent = `${savingPct.toFixed(1)}% across selected months`;
+  els.selectedMonthCount.textContent = state.selectedMonths.length;
+  els.selectedMonthLabel.textContent = selectedPeriodLabel();
+}
+
+function monthlyTotals(rows) {
+  const grouped = new Map();
+  state.selectedMonths.forEach((month) => grouped.set(month, 0));
+  rows.forEach((row) => grouped.set(row.month, (grouped.get(row.month) || 0) + rowDisplay(row)));
+  return [...grouped.entries()].map(([month, total]) => ({ month, total }));
+}
+
+function renderMainChart(rows) {
+  const data = monthlyTotals(rows);
+  if (!data.length) {
+    els.mainChart.innerHTML = `<div class="empty">Select at least one month</div>`;
+    return;
+  }
+
+  const proposed = fromUsd(proposedMonthlyUsd());
+  const max = Math.max(...data.map((item) => item.total), state.compareProposed ? proposed : 0, 1);
+  const width = 920;
+  const height = 380;
+  const pad = { top: 20, right: 32, bottom: 64, left: 74 };
+  const innerW = width - pad.left - pad.right;
+  const innerH = height - pad.top - pad.bottom;
+  const x = (index) => pad.left + (data.length === 1 ? innerW / 2 : (index / (data.length - 1)) * innerW);
+  const y = (value) => pad.top + innerH - (value / max) * innerH;
+  const proposedPoints = data.map((_, index) => `${x(index)},${y(proposed)}`).join(" ");
+  const currentPoints = data.map((item, index) => `${x(index)},${y(item.total)}`).join(" ");
+  const ticks = [0, 0.25, 0.5, 0.75, 1].map((ratio) => Math.round(max * ratio));
+
+  els.mainChart.innerHTML = `
+    <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
+      ${ticks
+        .map(
+          (tick) => `
+            <line class="tick" x1="${pad.left}" x2="${width - pad.right}" y1="${y(tick)}" y2="${y(tick)}"></line>
+            <text class="tick-label" x="10" y="${y(tick) + 4}">${money(tick).replace(state.displayCurrency + " ", "")}</text>`,
+        )
+        .join("")}
+      <line class="axis" x1="${pad.left}" x2="${width - pad.right}" y1="${height - pad.bottom}" y2="${height - pad.bottom}"></line>
+      ${state.compareProposed ? `<polyline points="${proposedPoints}" fill="none" stroke="#c48321" stroke-width="3" stroke-dasharray="9 7" />` : ""}
+      <polyline points="${currentPoints}" fill="none" stroke="#2f6fbb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      ${data
+        .map((item, index) => {
+          const saving = item.total - proposed;
+          return `
+            <g class="chart-point" data-month="${item.month}" data-x="${x(index)}" data-y="${y(item.total)}" data-current="${item.total}" data-proposed="${proposed}" data-saving="${saving}">
+              <circle cx="${x(index)}" cy="${y(item.total)}" r="${state.activeMonth === item.month ? 8 : 6}" fill="#2f6fbb"></circle>
+              ${state.compareProposed ? `<circle cx="${x(index)}" cy="${y(proposed)}" r="5" fill="#c48321"></circle>` : ""}
+              <text class="tick-label" x="${x(index)}" y="${height - 26}" text-anchor="middle">${monthLabel(item.month)}</text>
+            </g>`;
+        })
+        .join("")}
+    </svg>
+    <div class="legend">
+      <span><i class="swatch" style="background:#2f6fbb"></i>Current total spend</span>
+      ${state.compareProposed ? `<span><i class="swatch" style="background:#c48321"></i>Claude Team proposed</span>` : ""}
+    </div>`;
+
+  els.mainChart.querySelectorAll(".chart-point").forEach((point) => {
+    point.addEventListener("mouseenter", (event) => showTooltip(event, point.dataset));
+    point.addEventListener("mousemove", (event) => moveTooltip(event));
+    point.addEventListener("mouseleave", hideTooltip);
+    point.addEventListener("click", () => {
+      state.activeMonth = point.dataset.month;
+      state.activeEmployee = "";
+      state.expandedMonth = point.dataset.month;
+      renderDetails(rows);
+      renderTable(rows);
+      renderMainChart(rows);
+    });
+  });
+}
+
+function showTooltip(event, data) {
+  const current = Number(data.current);
+  const proposed = Number(data.proposed);
+  const saving = Number(data.saving);
+  const savingPct = current > 0 ? (saving / current) * 100 : 0;
+  els.chartTooltip.hidden = false;
+  els.chartTooltip.innerHTML = `
+    <strong>${monthLabel(data.month)}</strong>
+    <span>Current: ${money(current)}</span>
+    ${state.compareProposed ? `<span>Proposed: ${money(proposed)}</span><span>Saving: ${money(saving)} (${savingPct.toFixed(1)}%)</span>` : ""}
+  `;
+  moveTooltip(event);
+}
+
+function moveTooltip(event) {
+  const rect = els.mainChart.getBoundingClientRect();
+  els.chartTooltip.style.left = `${event.clientX - rect.left + 14}px`;
+  els.chartTooltip.style.top = `${event.clientY - rect.top + 14}px`;
+}
+
+function hideTooltip() {
+  els.chartTooltip.hidden = true;
+}
+
+function renderScenario() {
+  document.querySelector("#techSeats").textContent = `${CONFIG.proposed.techSeats} fixed`;
+  els.opsSeatValue.textContent = `${state.opsSeats} seats`;
+  els.scenarioTotal.textContent = money(fromUsd(proposedMonthlyUsd()));
+  els.techPeople.innerHTML = CONFIG.proposed.techPeople.map((name) => `<span>${escapeHtml(name)}</span>`).join("");
+  els.opsPeople.innerHTML = CONFIG.proposed.opsPeople
+    .map((name, index) => `<span class="${index < state.opsSeats ? "active" : ""}">${escapeHtml(name)}</span>`)
+    .join("");
+}
+
+function renderPie(target, rows, key) {
+  const grouped = topWithOthers(key === "project" ? groupProjectAllocations(rows, [key]) : groupRows(rows, [key]));
+  const total = grouped.reduce((sum, row) => sum + row.total, 0);
+  if (!total) {
+    target.innerHTML = `<div class="empty small">No data</div>`;
+    return;
+  }
+  let cursor = 0;
+  const gradient = grouped
+    .map((row, index) => {
+      const start = cursor;
+      const end = cursor + (row.total / total) * 100;
+      cursor = end;
+      return `${colors[index % colors.length]} ${start}% ${end}%`;
+    })
+    .join(", ");
+
+  target.innerHTML = `
+    <div class="pie" style="background: conic-gradient(${gradient})"></div>
+    <div class="pie-legend">
+      ${grouped
+        .map(
+          (row, index) => `
+          <button type="button" data-value="${escapeHtml(row[key])}">
+            <i style="background:${colors[index % colors.length]}"></i>
+            <span>${escapeHtml(row[key])}</span>
+            <strong>${((row.total / total) * 100).toFixed(1)}%</strong>
+          </button>`,
+        )
+        .join("")}
+    </div>`;
+
+  target.querySelectorAll("button[data-value]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (state.analysisMode === "project") {
+        state.activeProject = button.dataset.value;
+        renderProjectDetails(state.activeMonth ? monthRows(state.activeMonth) : selectedRows());
+      } else {
+        state.activeEmployee = button.dataset.value;
+        renderPersonDetails(state.activeMonth ? monthRows(state.activeMonth) : selectedRows());
+      }
+    });
+  });
+}
+
+function renderBreakdown(target, rows, key, onClick) {
+  const grouped = topWithOthers(key === "project" ? groupProjectAllocations(rows, [key]) : groupRows(rows, [key]));
+  const max = Math.max(...grouped.map((row) => row.total), 1);
+  if (!grouped.length) {
+    target.innerHTML = `<div class="empty small">No data</div>`;
+    return;
+  }
+  target.innerHTML = grouped
+    .map(
+      (row, index) => `
+      <button class="bar-row clickable" type="button" data-value="${escapeHtml(row[key])}">
+        <span class="bar-label" title="${escapeHtml(row[key])}">${escapeHtml(row[key])}</span>
+        <span class="bar-track"><span class="bar-fill" style="width:${Math.max((row.total / max) * 100, 3)}%; background:${colors[index % colors.length]}"></span></span>
+        <span class="bar-value">${money(row.total)}</span>
+      </button>`,
+    )
+    .join("");
+  target.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      onClick(button.dataset.value);
+    });
+  });
+}
+
+function renderDetails(rows = selectedRows()) {
+  const scopedRows = state.activeMonth ? rows.filter((row) => row.month === state.activeMonth) : rows;
+  const scopedMonths = unique(scopedRows.map((row) => row.month));
+  const proposed = fromUsd(proposedMonthlyUsd() * Math.max(scopedMonths.length, 1));
+  const subject = state.analysisMode === "project" ? "Project Cost Share" : "Employee Cost Share";
+  els.detailTitle.textContent = state.activeMonth ? `${monthLabel(state.activeMonth)} ${subject}` : `Selected Period ${subject}`;
+  els.detailSubtitle.textContent = scopedRows.length
+    ? `Period: ${detailPeriodLabel()} · Current: ${money(sumDisplay(scopedRows))} · Proposed: ${money(proposed)}`
+    : "No data for the selected period";
+  els.clearMonthFocus.hidden = !state.activeMonth;
+  if (state.analysisMode === "project") {
+    renderPie(els.employeePie, scopedRows, "project");
+    renderBreakdown(els.employeeBreakdown, scopedRows, "project", (project) => {
+      state.activeProject = project;
+      renderProjectDetails(scopedRows);
+    });
+    renderProjectDetails(scopedRows);
+  } else {
+    renderPie(els.employeePie, scopedRows, "employee");
+    renderBreakdown(els.employeeBreakdown, scopedRows, "employee", (employee) => {
+      state.activeEmployee = employee;
+      renderPersonDetails(scopedRows);
+    });
+    renderPersonDetails(scopedRows);
+  }
+}
+
+function renderPersonDetails(scopedRows) {
+  const employeeRows = groupRows(scopedRows, ["employee"]).sort((a, b) => b.total - a.total);
+  const displayedEmployeeRows = topWithOthers(employeeRows);
+  const requestedEmployee = state.activeEmployee;
+  const hasRealEmployee = employeeRows.some((row) => row.employee === requestedEmployee);
+  const hasDisplayedEmployee = displayedEmployeeRows.some((row) => row.employee === requestedEmployee);
+  const employee = hasRealEmployee || hasDisplayedEmployee ? requestedEmployee : requestedEmployee ? "" : employeeRows[0]?.employee || "";
+  state.activeEmployee = employee;
+  if (!employee) {
+    els.personTitle.textContent = "Employee Subscription Details";
+    els.personSubtitle.textContent = requestedEmployee
+      ? "This employee is not available under the current filters"
+      : "No employee data in the selected period";
+    els.personDetails.innerHTML = `<div class="empty small">Selection no longer available. Please choose another employee from the chart.</div>`;
+    return;
+  }
+
+  if (employee === "Others") {
+    const others = displayedEmployeeRows.find((row) => row.employee === "Others");
+    const children = others?.children || [];
+    if (!others) {
+      els.personTitle.textContent = "Other Employee Breakdown";
+      els.personSubtitle.textContent = "No grouped employees under the current filters";
+      els.personDetails.innerHTML = `<div class="empty small">Others is not available for the current selection.</div>`;
+      return;
+    }
+    els.personTitle.textContent = `Other Employee Breakdown · ${children.length} employees`;
+    els.personSubtitle.textContent = `Grouped for readability · Total ${money(others?.total || 0)}`;
+    els.personDetails.innerHTML = `
+      <div class="detail-card-list">
+        <h3>Other Employee Breakdown</h3>
+        ${children
+          .map(
+            (row) => `
+          <button class="detail-action" type="button" data-employee="${escapeHtml(row.employee)}">
+            <span>${escapeHtml(row.employee)}</span>
+            <strong>${money(row.total)}</strong>
+          </button>`,
+          )
+          .join("")}
+      </div>
+      <p class="placeholder-note">Others is a visualization grouping only. Click an employee above to open the normal employee detail view.</p>`;
+    els.personDetails.querySelectorAll("[data-employee]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.activeEmployee = button.dataset.employee;
+        renderPersonDetails(scopedRows);
+      });
+    });
+    return;
+  }
+
+  const personRows = scopedRows.filter((row) => row.employee === employee);
+  const subscriptionRows = groupRows(personRows, ["subscription"]).sort((a, b) => b.total - a.total);
+  const projectRows = groupProjectAllocations(personRows, ["project"]).sort((a, b) => b.total - a.total);
+  const current = sumDisplay(personRows);
+  const monthCount = Math.max(unique(personRows.map((row) => row.month)).length, 1);
+  const proposed = fromUsd(CONFIG.proposed.pricePerSeatUsd * monthCount);
+  const saving = current - proposed;
+  const activeMonths = unique(personRows.map((row) => row.month));
+  els.personTitle.textContent = `${employee} · Active months: ${monthsLabel(activeMonths)}`;
+  els.personSubtitle.textContent = `Current ${money(current)} / Proposed seat ${money(proposed)} / Saving ${money(saving)}`;
+  els.personDetails.innerHTML = `
+    <div class="person-summary">
+      <div><span>Current</span><strong>${money(current)}</strong></div>
+      <div><span>Claude seat</span><strong>${money(proposed)}</strong></div>
+      <div><span>Saving</span><strong class="${saving < 0 ? "negative" : ""}">${money(saving)}</strong></div>
+    </div>
+    <div class="detail-card-list">
+      <h3>Subscriptions</h3>
+      ${subscriptionRows
+        .map(
+          (row) => `
+        <div>
+          <span>${escapeHtml(row.subscription)}</span>
+          <strong>${money(row.total)}</strong>
+        </div>`,
+        )
+        .join("")}
+    </div>
+    <div class="detail-card-list">
+      <h3>Project allocation</h3>
+      ${projectRows
+        .map(
+          (row) => `
+        <div>
+          <span>${escapeHtml(row.project)}</span>
+          <strong>${money(row.total)}</strong>
+        </div>`,
+        )
+        .join("")}
+    </div>
+    <p class="placeholder-note">The spreadsheet now supports project cost allocation. Claude admin usage exports can later add token usage, active users, and project usage reports.</p>`;
+}
+
+function renderProjectDetails(scopedRows) {
+  const projectRows = groupProjectAllocations(scopedRows, ["project"]).sort((a, b) => b.total - a.total);
+  const displayedProjectRows = topWithOthers(projectRows);
+  const requestedProject = state.activeProject;
+  const hasRealProject = projectRows.some((row) => row.project === requestedProject);
+  const hasDisplayedProject = displayedProjectRows.some((row) => row.project === requestedProject);
+  const project = hasRealProject || hasDisplayedProject ? requestedProject : requestedProject ? "" : projectRows[0]?.project || "";
+  state.activeProject = project;
+  if (!project) {
+    els.personTitle.textContent = "Project Usage Details";
+    els.personSubtitle.textContent = requestedProject
+      ? "This project is not available under the current filters"
+      : "No project data in the selected period";
+    els.personDetails.innerHTML = `<div class="empty small">Selection no longer available. Please choose another project from the chart.</div>`;
+    return;
+  }
+
+  if (project === "Others") {
+    const others = displayedProjectRows.find((row) => row.project === "Others");
+    const children = others?.children || [];
+    if (!others) {
+      els.personTitle.textContent = "Other Project Breakdown";
+      els.personSubtitle.textContent = "No grouped projects under the current filters";
+      els.personDetails.innerHTML = `<div class="empty small">Others is not available for the current selection.</div>`;
+      return;
+    }
+    els.personTitle.textContent = `Other Project Breakdown · ${children.length} projects`;
+    els.personSubtitle.textContent = `Grouped for readability · Total ${money(others?.total || 0)}`;
+    els.personDetails.innerHTML = `
+      <div class="detail-card-list">
+        <h3>Other Project Breakdown</h3>
+        ${children
+          .map(
+            (row) => `
+          <button class="detail-action" type="button" data-project="${escapeHtml(row.project)}">
+            <span>${escapeHtml(row.project)}</span>
+            <strong>${money(row.total)}</strong>
+          </button>`,
+          )
+          .join("")}
+      </div>
+      <p class="placeholder-note">Others is a visualization grouping only. Click a project above to open the normal project detail view.</p>`;
+    els.personDetails.querySelectorAll("[data-project]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.activeProject = button.dataset.project;
+        renderProjectDetails(scopedRows);
+      });
+    });
+    return;
+  }
+
+  const allocations = projectAllocations(scopedRows).filter((row) => row.project === project);
+  const current = allocations.reduce((total, row) => total + row.displayTotal, 0);
+  const activeMonths = unique(allocations.map((row) => row.month));
+  const activeScopedRows = scopedRows.filter((row) => activeMonths.includes(row.month));
+  const allProjects = groupProjectAllocations(activeScopedRows, ["project"]);
+  const allProjectTotal = allProjects.reduce((total, row) => total + row.total, 0);
+  const scopedMonthCount = Math.max(activeMonths.length, 1);
+  const proposedForPeriod = fromUsd(proposedMonthlyUsd() * scopedMonthCount);
+  const allocatedProposed = allProjectTotal > 0 ? proposedForPeriod * (current / allProjectTotal) : 0;
+  const saving = current - allocatedProposed;
+  const employees = groupAllocationRows(allocations, ["employee"]).sort((a, b) => b.total - a.total);
+  const subscriptions = groupAllocationRows(allocations, ["subscription"]).sort((a, b) => b.total - a.total);
+  const contributorCount = unique(allocations.map((row) => row.employee)).length;
+  const costPerContributor = contributorCount ? current / contributorCount : 0;
+
+  els.personTitle.textContent = `${project} · Active months: ${monthsLabel(activeMonths)}`;
+  els.personSubtitle.textContent = `Current ${money(current)} / Allocated proposed ${money(allocatedProposed)} / Saving ${money(saving)}`;
+  const projectInsight =
+    project === "VIO + Mini APP"
+      ? `<div class="insight-card">
+          <h3>Cost Driver Explanation</h3>
+          <p>VIO + Mini APP has the highest AI-related cost because many contributors supporting this project are not core tech team members. As a result, they rely more heavily on AI tools for coding support, troubleshooting, documentation, and task execution. The higher AI spend is therefore not only a subscription cost issue, but also an indicator that this project requires stronger AI-assisted support and clearer resource monitoring.</p>
+        </div>`
+      : "";
+  els.personDetails.innerHTML = `
+    <div class="person-summary metric-cards">
+      <div><span>Cost by project</span><strong>${money(current)}</strong></div>
+      <div><span>Savings by project</span><strong class="${saving < 0 ? "negative" : ""}">${money(saving)}</strong></div>
+      <div><span>Cost per contributor</span><strong>${money(costPerContributor)}</strong></div>
+    </div>
+    ${projectInsight}
+    <div class="detail-card-list">
+      <h3>Contributors</h3>
+      ${employees
+        .map(
+          (row) => `
+        <div>
+          <span>${escapeHtml(row.employee)}</span>
+          <strong>${money(row.total)}</strong>
+        </div>`,
+        )
+        .join("")}
+    </div>
+    <div class="detail-card-list">
+      <h3>Subscriptions used</h3>
+      ${subscriptions
+        .map(
+          (row) => `
+        <div>
+          <span>${escapeHtml(row.subscription)}</span>
+          <strong>${money(row.total)}</strong>
+        </div>`,
+        )
+        .join("")}
+    </div>
+    <p class="placeholder-note">Allocated proposed cost is based on this project's share of current spend, so total project savings ties back to the overall savings line.</p>`;
+}
+
+function renderTable(rows) {
+  const monthly = monthlyTotals(rows);
+  els.rowCount.textContent = `${monthly.length} months`;
+  els.detailRows.innerHTML = monthly
+    .map((monthRow) => {
+      const rowsForMonth = rows.filter((row) => row.month === monthRow.month);
+      const proposed = fromUsd(proposedMonthlyUsd());
+      const saving = monthRow.total - proposed;
+      const rate = monthRow.total > 0 ? (saving / monthRow.total) * 100 : 0;
+      const isExpanded = state.expandedMonth === monthRow.month;
+      return `
+        <tr class="summary-row">
+          <td>${monthLabel(monthRow.month)}</td>
+          <td class="amount">${money(monthRow.total)}</td>
+          <td class="amount">${money(proposed)}</td>
+          <td class="amount ${saving < 0 ? "negative" : ""}">${money(saving)}</td>
+          <td>${rate.toFixed(1)}%</td>
+          <td><button class="details-button" type="button" data-month="${monthRow.month}">${isExpanded ? "Hide details" : "Details"}</button></td>
+        </tr>
+        ${isExpanded ? renderMonthDetailRows(rowsForMonth) : ""}`;
+    })
+    .join("");
+
+  els.detailRows.querySelectorAll("button[data-month]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const month = button.dataset.month;
+      state.expandedMonth = state.expandedMonth === month ? "" : month;
+      state.activeMonth = month;
+      state.activeEmployee = "";
+      render();
+    });
+  });
+}
+
+function renderMonthDetailRows(rowsForMonth) {
+  const employees = groupRows(rowsForMonth, ["employee"])
+    .sort((a, b) => b.total - a.total)
+    .map((employeeRow) => {
+      const personRows = rowsForMonth.filter((row) => row.employee === employeeRow.employee);
+      const subscriptions = unique(personRows.map((row) => row.subscription)).join(", ");
+      const countries = unique(personRows.map((row) => countryName[row.countryCode])).join(", ");
+      const original = personRows.map((row) => money(row.total, row.currency)).join(" + ");
+      const projects = unique(personRows.flatMap((row) => row.projects || ["Unassigned"])).join(", ");
+      return `
+        <tr class="detail-row">
+          <td></td>
+          <td colspan="2">
+            <strong>${escapeHtml(employeeRow.employee)}</strong>
+            <small class="meta-lines"><span><b>Location:</b> ${escapeHtml(countries)}</span><span><b>Subscriptions:</b> ${escapeHtml(subscriptions)}</span><span><b>Projects:</b> ${escapeHtml(projects)}</span></small>
+          </td>
+          <td class="amount">${escapeHtml(original)}</td>
+          <td class="amount">${money(employeeRow.total)}</td>
+          <td>${escapeHtml(personRows.map((row) => row.remark || row.supportUser || "").filter(Boolean).join("; "))}</td>
+        </tr>`;
+    })
+    .join("");
+  return `<tr class="detail-header"><td></td><td colspan="5">Employee and subscription details</td></tr>${employees}`;
+}
+
+function proposalDefaults(rows = selectedRows()) {
+  const total = sumDisplay(rows);
+  const proposed = fromUsd(proposedMonthlyUsd() * state.selectedMonths.length);
+  const saving = total - proposed;
+  const savingPct = total > 0 ? (saving / total) * 100 : 0;
+  return `
+<h2>Proposal: Move AI Subscriptions to Claude Team Centralized Billing</h2>
+<h3>1. Current shortage</h3>
+<p>Current AI subscription spending is fragmented across employees, tools, and billing methods. Management can see reimbursement cost, but it is difficult to monitor each person's project focus, identify which projects consume the most budget, recover accounts when employees leave, or prepare recurring reports without manual spreadsheet consolidation.</p>
+<h3>2. Proposed solution</h3>
+<p>Move AI subscriptions to Claude Team Standard with centralized billing. The proposed model uses fixed tech team seats, adjustable operation seats, and a fixed monthly extra usage pool so the company can manage cost and capacity from one place.</p>
+<h3>3. Why tech team accounts should not be shared</h3>
+<p>Shared accounts are not recommended for the tech team. Their token demand is already high, and Claude usage limits refresh every 5 hours. Sharing seats would create unstable availability for technical work and make it unclear who used tokens for which project.</p>
+<p>Individual tech seats make usage measurable by person, helping management understand workload, project focus, and contribution. Centralized billing still lets the company monitor the overall pool and shift extra usage to higher-demand users, reducing waste compared with standalone USD 20 subscriptions that may be underused by some users while others run out of capacity.</p>
+<h3>4. Expected Return</h3>
+<p>For the selected period (${selectedPeriodLabel()}), current spend is <strong>${money(total)}</strong>, proposed Claude Team cost is <strong>${money(proposed)}</strong>, and estimated variance is <strong>${money(saving)}</strong> (${savingPct.toFixed(1)}%).</p>
+<p>Although direct subscription savings are limited, centralized billing provides operational visibility and resource management capabilities that are not available under the current reimbursement model.</p>
+<h3>5. Future ROI Measurement Framework</h3>
+<p>The current dashboard already provides visibility into AI spending through metrics such as monthly cost, cost by employee, cost by project, and cost per contributor.</p>
+<p>Once Claude Team usage exports become available, these reports can be extended to include AI usage by employee and project, project-level cost allocation, workload visibility, and budget accountability.</p>
+<p>Over time, this framework can support project ROI analysis by linking AI usage, manpower investment, infrastructure cost, project duration, and business outcomes. This allows management to evaluate not only how much is spent on AI, but also how effectively resources are allocated across projects and teams.</p>`;
+}
+
+function renderProposalDefaults() {
+  if (!els.proposalText || els.proposalText.dataset.touched === "true") return;
+  els.proposalText.innerHTML = proposalDefaults();
+}
+
+function proposalSectionHtml(id, title, selector) {
+  const node = document.querySelector(selector);
+  if (!node) return "";
+  return `<section class="proposal-visual" data-visual="${id}"><h2>${escapeHtml(title)}</h2>${node.outerHTML}</section>`;
+}
+
+function embeddedStyles() {
+  return [...document.styleSheets]
+    .map((sheet) => {
+      try {
+        return [...sheet.cssRules].map((rule) => rule.cssText).join("\n");
+      } catch {
+        return "";
+      }
+    })
+    .join("\n");
+}
+
+function downloadProposal() {
+  const selected = new Set([...document.querySelectorAll(".visual-options input:checked")].map((input) => input.value));
+  const visuals = [
+    selected.has("trend") ? proposalSectionHtml("trend", "Current Spend vs Claude Team", ".chart-panel") : "",
+    selected.has("seat") ? proposalSectionHtml("seat", "Seat Scenario", ".scenario-panel") : "",
+    selected.has("breakdown") ? proposalSectionHtml("breakdown", "Selected Breakdown", ".grid.two") : "",
+    selected.has("monthly") ? proposalSectionHtml("monthly", "Monthly Cost Summary", ".table-panel") : "",
+    selected.has("recommendation") ? proposalSectionHtml("recommendation", "Recommendation and Return Measurement", ".plan-comparison") : "",
+  ].join("");
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Claude Team Proposal</title>
+  <style>${embeddedStyles()}</style>
+  <style>
+    body{font-family:Inter,Arial,sans-serif;margin:32px;color:#17202a;line-height:1.45}
+    h1{font-size:30px;margin-bottom:8px} h2{font-size:22px;margin-top:28px} h3{font-size:16px;margin-top:18px}
+    .proposal-text{border:1px solid #dbe3ea;border-radius:8px;padding:18px;background:#fff}
+    .proposal-visual{margin-top:24px;border:1px solid #dbe3ea;border-radius:8px;padding:16px;break-inside:avoid;background:#fff}
+    .proposal-visual button,.proposal-visual input,.proposal-visual select{pointer-events:none}
+    .chart-tooltip{display:none}
+    @media print{body{margin:18mm}.proposal-visual{box-shadow:none}}
+  </style>
+</head>
+<body>
+  <h1>Claude Team Subscription Proposal</h1>
+  <p><strong>Generated:</strong> ${new Date().toLocaleString()} · <strong>Period:</strong> ${selectedPeriodLabel()} · <strong>Currency:</strong> ${state.displayCurrency}</p>
+  <div class="proposal-text" contenteditable="true">${els.proposalText.innerHTML}</div>
+  ${visuals}
+</body>
+</html>`;
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `claude-team-proposal-${new Date().toISOString().slice(0, 10)}.html`;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function render() {
+  populateFilters();
+  const rows = selectedRows();
+  renderMonthChecks();
+  renderScenario();
+  renderKpis(rows);
+  renderMainChart(rows);
+  renderDetails(rows);
+  renderTable(rows);
+  renderProposalDefaults();
+}
+
+function bindControls() {
+  els.currencySelect.addEventListener("change", () => {
+    state.displayCurrency = els.currencySelect.value;
+    render();
+  });
+  els.countryFilter.addEventListener("change", () => {
+    state.country = els.countryFilter.value;
+    render();
+  });
+  els.employeeFilter.addEventListener("change", () => {
+    state.employee = els.employeeFilter.value;
+    render();
+  });
+  els.compareToggle.addEventListener("change", () => {
+    state.compareProposed = els.compareToggle.checked;
+    render();
+  });
+  els.employeeMode.addEventListener("click", () => {
+    state.analysisMode = "employee";
+    state.activeProject = "";
+    els.employeeMode.classList.add("active");
+    els.projectMode.classList.remove("active");
+    render();
+  });
+  els.projectMode.addEventListener("click", () => {
+    state.analysisMode = "project";
+    state.activeEmployee = "";
+    els.projectMode.classList.add("active");
+    els.employeeMode.classList.remove("active");
+    render();
+  });
+  els.clearMonthFocus.addEventListener("click", () => {
+    state.activeMonth = "";
+    state.activeEmployee = "";
+    state.expandedMonth = "";
+    render();
+  });
+  els.opsSeats.addEventListener("input", () => {
+    state.opsSeats = Number(els.opsSeats.value);
+    render();
+  });
+  els.selectAllMonths.addEventListener("click", () => {
+    state.selectedMonths = unique(state.rows.map((row) => row.month));
+    state.activeMonth = "";
+    state.expandedMonth = "";
+    render();
+  });
+  els.proposalText?.addEventListener("input", () => {
+    els.proposalText.dataset.touched = "true";
+  });
+  els.downloadProposal?.addEventListener("click", downloadProposal);
+  document.addEventListener("click", (event) => {
+    if (!els.subscriptionDropdown?.contains(event.target)) {
+      els.subscriptionDropdown?.classList.remove("open");
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") els.subscriptionDropdown?.classList.remove("open");
+  });
+}
+
+async function init() {
+  const data = window.DASHBOARD_DATA || (await (await fetch("./data/dashboard-data.json")).json());
+  state.rows = data.rows;
+  const months = unique(state.rows.map((row) => row.month));
+  state.selectedMonths = months.slice(-4);
+  state.activeMonth = "";
+  els.sourceMeta.textContent = `Source: ${data.sourceFile.split("/").pop()} · Updated ${new Date(data.generatedAt).toLocaleString()}`;
+  bindControls();
+  render();
+}
+
+init().catch((error) => {
+  document.body.innerHTML = `<main><section class="panel"><h2>Data failed to load</h2><p>${escapeHtml(error.message)}</p></section></main>`;
+});
+
+</script>
+  </body>
+</html>
